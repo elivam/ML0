@@ -1,4 +1,4 @@
-#' выход : 
+#' вход : 
 #' Xl: matrix 
 #'     обучающая выборка, на последнем месте метка класса
 #' u:  vector
@@ -12,10 +12,39 @@
 #' 1. нахожу расстояние от точки u до точек из выборки, образуя новую матрицу
 #' 2. нахожу минимальное расстояние в матрице и запоминаю точку А
 #' 3. узнаю какому классу принадлежит эта точка А и точку u окрашиваю в тот  же класс что и точку u
-evcliDestance <- function (x1,y1,x2,y2){
-  return(sqrt((x2-x1)^2+(y2-y1)^2)) 
+
+
+ui <- fluidPage(
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("x",
+                  "Задайте знанчения x:",
+                  min = 1,
+                  max = 7,
+                  value = 1,
+                  step = 0.5),
+      sliderInput("y",
+                  "Задайте значения y:",
+                  min = 0,
+                  max = 3,
+                  value = 0.25,
+                  step = 0.1
+                  )
+    ),
+    mainPanel(
+      plotOutput("carsPlot")
+    )
+    
+  )
+)
+
+server <- function(input, output) {
+
+evcliDestance <- function (x,u){
+  return (sqrt(sum((x - u)^2)))
 }
-nn <- function(xl, u1, u2){
+nn <- function(xl, u, q = evcliDestance){
       
     l <- dim(xl)[1] #кол-во строк 
     n <- dim(xl)[2] - 1 #кол-во признаков
@@ -23,17 +52,24 @@ nn <- function(xl, u1, u2){
     
     dist <- array(NA,l)
     for (i in 1:l){
-      dist[i] = evcliDestance(xl[i,1],xl[i,2],u1,u2) 
+      dist[i] = q(xl[i, 1:n],u) 
     } 
      minXl  <- which.min(dist)
      return (xl[minXl, ])
 }   
-x <- 1
-y <- 0.5
-colors <- c("setosa" = "red", "versicolor" = "green3",
-            "virginica" = "blue")
-la <-nn(iris[, 3:5], x, y)
-plot(iris[, 3:4], pch = 10, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
-points(x, y, pch = 22, bg = colors[la[1,3]], asp = 1)
-s
 
+
+output$carsPlot <- renderPlot({
+  x <- input$x
+  y <- input$y
+  u <- c(x ,y)
+  colors <- c("setosa" = "#FFCC33", "versicolor" = "#0033FF",
+              "virginica" = "#CC00CC")
+  cl <-nn(iris[, 3:5], u)
+  plot(iris[, 3:4], pch = 20, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
+  points(u[1], u[2], pch = 21, bg = colors[cl[1,3]], asp = 1)
+})
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
