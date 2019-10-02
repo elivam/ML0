@@ -85,7 +85,7 @@
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/knnLoo.PNG) 
  
  Далее построим карту классификации для метода kNN:
- [kNN and LOO.R](https://github.com/elivam/ML0/blob/master/task1/classMapkNN.R)
+ [classMapkNN.R](https://github.com/elivam/ML0/blob/master/task1/classMapkNN.R)
   ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapkNN.PNG)
   ### Задача 4: Алгоритм k-взвешенных ближайших соседей
   
@@ -97,13 +97,13 @@
  
     
  На языке R алгоритм реализован следующим образом :
- 
  [kwNN.R](https://github.com/elivam/ML0/blob/master/task1/kwn.R)
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnn.PNG)
  
  Далее построим карту классификации для метода kNN:
  
- [kwNN.R](https://github.com/elivam/ML0/blob/master/task1/classMapkwNN.R)
+ На языке R алгоритм реализован следующим образом :
+ [classMapkwNN.R](https://github.com/elivam/ML0/blob/master/task1/classMapkwNN.R)
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapkwNN.PNG)
  
  
