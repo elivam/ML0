@@ -80,4 +80,11 @@
  **@return** k, при котором допускается наименьшая ошибка   
  
  [kNN and LOO.R](https://github.com/elivam/ML0/blob/master/task1/kNNLOO.R)
- ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LOOFormulaknnLoo.PNG) 
+ ![alt text](https://github.com/elivam/ML0/blob/master/pictures/knnLoo.PNG) 
+ 
+ Далее построим карту классификации для метода kNN:
+ [kNN and LOO.R](https://github.com/elivam/ML0/blob/master/task1/classMapkNN.R)
+  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapkNN.PNG)
+  
+
+ 
