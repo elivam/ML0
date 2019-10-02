@@ -24,7 +24,8 @@
  1. нахожу расстояние от точки u до точек из выборки, образуя новый вектор
  2. нахожу минимальное расстояние в векторе и запоминаю точку А
  3. узнаю какому классу принадлежит эта точка А и точку u окрашиваю в тот  же класс, какому принадлежит точка А
- 
+    
+ На языке R алгоритм реализован следующим образом :
  [1NN.R](https://github.com/elivam/ML0/blob/master/1NN/1NN.R)
  
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/1nn.PNG)
@@ -50,14 +51,15 @@
  k:  кол-во соседей
      определять кол-во требуемых соседей по LOO для оптимальности алгоритма 
 	 
- **@return** имя класса
+ **выход** имя класса
  
  Сам Алгоритм
  1. нахожу расстояния от точки u до k-ближайших-соседей образуя новый массив, 
    где будет записан класс этой k-точки-соседа и расстояние 
  2. сортирую этот массив 
  3. считаю какие классы соседей встречаются и даю предпочтение тому классу, который наболее частов встречается
-  
+     
+ На языке R алгоритм реализован следующим образом :
  [kNN.R](https://github.com/elivam/ML0/blob/master/task1/knnShiny.R)
  
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/knn.PNG)
@@ -77,14 +79,31 @@
  k:  кол-во соседей
      определять кол-во требуемых соседей по LOO для оптимальности алгоритма 
 	 
- **@return** k, при котором допускается наименьшая ошибка   
- 
+ **выход** k, при котором допускается наименьшая ошибка   
+ На языке R алгоритм реализован следующим образом :
  [kNN and LOO.R](https://github.com/elivam/ML0/blob/master/task1/kNNLOO.R)
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/knnLoo.PNG) 
  
  Далее построим карту классификации для метода kNN:
  [kNN and LOO.R](https://github.com/elivam/ML0/blob/master/task1/classMapkNN.R)
   ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapkNN.PNG)
+  ### Задача 4: Алгоритм k-взвешенных ближайших соседей
   
+   Недостаток kNN в том, что максимальная сумма голосов может достигаться на нескольких классах одновременно.
+В задачах с двумя классами этого можно избежать, если брать только нечётные значения k. Более общая тактика, которая годится и для случая многих классов — ввести
+строго убывающую последовательность вещественных весов wi, задающих вклад i-го соседа в классификацию
 
+  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnnFormula.PNG)
+ 
+    
+ На языке R алгоритм реализован следующим образом :
+ 
+ [kwNN.R](https://github.com/elivam/ML0/blob/master/task1/kwn.R)
+ ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnn.PNG)
+ 
+ Далее построим карту классификации для метода kNN:
+ 
+ [kwNN.R](https://github.com/elivam/ML0/blob/master/task1/classMapkwNN.R)
+ ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapkwNN.PNG)
+ 
  
