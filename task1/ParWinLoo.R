@@ -64,7 +64,7 @@ gauss_kernel <- function(dist, h) {
 
 parzen_window <- function(xl, u, h, kerFunc) {
   l <- dim(xl)[1]
-  orderedXl <- sortObjectsByDist(xl, u)
+  orderedXl <- sortObjByDist(xl, u)
   n <- dim(orderedXl)[2] - 1
   classes <- orderedXl[1:l, n]
   
@@ -105,7 +105,7 @@ loo <- function(xl, kerFunc) {
   
   looDataFrame <- data.frame(Hseq, hLooArray)
   minH <- looDataFrame[which.min(looDataFrame$hLooArray),]
-  print(minH)
+  
   points(minH, pch=21, bg="red")
 }
 

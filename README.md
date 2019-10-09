@@ -9,7 +9,7 @@ u к тому классу , для которого суммарный вес �
 | kNN           | 0.03          |  k = 6               |
 | kwNN          | 0.04          |  q = 0.05            |
 |               Парзеновское окно                      |
-| Прямоугольное |               | h =                  |
+| Прямоугольное | 0.04          | h = 0.4              |
 | Квадратическое|               | h =                  |
 | Епанечникова  |               | h =                  |
 | Треугольное   |               | h =                  |
@@ -184,69 +184,58 @@ u к тому классу , для которого суммарный вес �
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/R(Z).PNG)
 
 #### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerSquare.PNG)
 
-Оптимальный параметр ширины окна h=, оценка LOO=.
+Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.04.
 
 Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
 ### Квадратическое ядро
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG)
 
 #### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
-
-Оптимальный параметр ширины окна h=, оценка LOO=.
-
-
-Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
-
-### Ядро Епанечникова 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
-#### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
-
 Оптимальный параметр ширины окна h=, оценка LOO=.
 
 
+
 Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
 ### Ядро Епанечникова 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/epanc_ker.PNG)
 
 #### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
 Оптимальный параметр ширины окна h=, оценка LOO=.
 
 
 Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
 ### Треугольное ядро 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG)
 
 #### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
 Оптимальный параметр ширины окна h=, оценка LOO=.
 
 
 Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
 ### Гауссовское ядро 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG)
 
 #### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
 
 Оптимальный параметр ширины окна h=, оценка LOO=.
 
 
 Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)

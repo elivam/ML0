@@ -79,7 +79,8 @@ parzen_window <- function(xl, u, h, kerFunc) {
 }
 
 classificationMapParzenWind <- function(xl, h, kernelFunc) {
-  colors <- c("setosa" = "red", "versicolor" = "green", "virginica" = "blue")
+  colors <- c("setosa" = "#FFCC33", "versicolor" = "#0033FF",
+              "virginica" = "#CC00CC")
   plot(xl[1:2], pch = 21, col = colors[xl$Species], bg = colors[xl$Species])
   
   for (i in seq(1.0, 7.0, 0.1)) {
@@ -90,3 +91,6 @@ classificationMapParzenWind <- function(xl, h, kernelFunc) {
     }
   }
 }
+
+classificationMapParzenWind(iris[,3:5], 0.4,ker_rect )
+
