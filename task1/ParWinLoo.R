@@ -79,13 +79,35 @@ parzen_window <- function(xl, u, h, kerFunc) {
 }
 
 
-colors <- c("setosa" = "#FFCC33", "versicolor" = "#0033FF",
-            "virginica" = "#CC00CC")
-plot(iris[, 3:4], pch = 20, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
+
+loo <- function(xl, kerFunc) {
+  l <- dim(xl)[1]
+  hLooArray <- array(0, length(seqH))
+  j <- 1
+  Hseq <- seq(0.1, 5, 0.1)
+  for(h in Hseq) {
+    cnt <- 0
+    for(i in 1:l) {
+      u <- c(xl[i, 1], xl[i, 2])
+      x <- xl[-i, 1:3]
+      class <- parzen_window(x, u, h, kerFunc)
+      
+      if(xl[i, 3] != class) {
+        cnt <- cnt + 1
+      }
+    }
+    hLooArray[j] <- cnt / l
+    j <- j + 1
+    print(j)
+  }
+
+  plot(Hseq, hLooArray, xlab = "h", ylab = "LOO(h)", type = "l")
   
-class <- parzenWindow(xl, u, 0.5, gauss_kernel)
-points(u[1], u[2], pch = 21, bg = colors[class], asp = 1)
+  looDataFrame <- data.frame(Hseq, hLooArray)
+  minH <- looDataFrame[which.min(looDataFrame$hLooArray),]
+  print(minH)
+  points(minH, pch=21, bg="red")
+}
 
-
-#можно сделать в shiny с указанием ядра и h и (x,y).
+loo(iris[,3:5],ker_rect)
 

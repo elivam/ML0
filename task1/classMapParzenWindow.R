@@ -78,14 +78,15 @@ parzen_window <- function(xl, u, h, kerFunc) {
   return(class)
 }
 
-
-colors <- c("setosa" = "#FFCC33", "versicolor" = "#0033FF",
-            "virginica" = "#CC00CC")
-plot(iris[, 3:4], pch = 20, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
+classificationMapParzenWind <- function(xl, h, kernelFunc) {
+  colors <- c("setosa" = "red", "versicolor" = "green", "virginica" = "blue")
+  plot(xl[1:2], pch = 21, col = colors[xl$Species], bg = colors[xl$Species])
   
-class <- parzenWindow(xl, u, 0.5, gauss_kernel)
-points(u[1], u[2], pch = 21, bg = colors[class], asp = 1)
-
-
-#можно сделать в shiny с указанием ядра и h и (x,y).
-
+  for (i in seq(1.0, 7.0, 0.1)) {
+    for (j in seq(0.1, 2.5, 0.1)) {
+      u <- c(i, j)
+      class <- parzenWindow(xl, u, h, kernelFunc)
+      points(i, j, pch = 21, col = colors[class])
+    }
+  }
+}
