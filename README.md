@@ -15,11 +15,14 @@
  **вход :** 
  
  Xl: matrix 
+ 
      обучающая выборка, на последнем месте метка класса;
  u:  vector
+ 
      классифицируемый объект;
 	 
  q : расстояние
+ 
      определить функцию расстояния;
  
  **выход:** имя класса
@@ -43,12 +46,15 @@
  **вход :** 
  
  Xl: matrix 
+ 
      обучающая выборка, на последнем месте метка класса
 	 
  u:  vector
+ 
      классифицируемый объект
 	 
  q : расстояниe
+ 
      определить функцию расстояния
 	 
  k:  кол-во соседей
@@ -65,7 +71,7 @@
  На языке R алгоритм реализован следующим образом :
  [kNN.R](https://github.com/elivam/ML0/blob/master/task1/knnShiny.R)
  
- ![alt text](https://github.com/elivam/ML0/blob/master/pictures/knn.PNG)
+ССлыка на Shiny
  
   ###  Найти оптимальное кол-во соседей методом LOO (критерий скользящего контроля)
   При k = 1 этот алгоритм совпадает с предыдущим, следовательно, неустойчив
@@ -73,7 +79,7 @@
 Таким образом, крайние значения k нежелательны. На практике оптимальное значение параметра k 
 определяют по критерию скользящего контроля с исключением
 объектов по одному (leave-one-out, LOO). Для каждого объекта 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/xitext.PNG)  проверяется,
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG)  проверяется,
 правильно ли он классифицируется по своим k ближайшим соседям
   
   ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LOOFormula.PNG) 
@@ -96,7 +102,7 @@
   
    Недостаток kNN в том, что максимальная сумма голосов может достигаться на нескольких классах одновременно.
 В задачах с двумя классами этого можно избежать, если брать только нечётные значения k. Более общая тактика, которая годится и для случая многих классов — ввести
-строго убывающую последовательность вещественных весов wi, задающих вклад i-го соседа в классификацию
+строго убывающую последовательность вещественных весов  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Witext.PNG), задающих вклад i-го соседа в классификацию
 
   ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnnFormula.PNG)
  
@@ -109,7 +115,17 @@
  
  На языке R алгоритм реализован следующим образом :
  [classMapkwNN.R](https://github.com/elivam/ML0/blob/master/task1/classMapkwNN.R)
- ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapkwNN.PNG)
+ Ccылка на shiny
  
+ ###  Найти оптимальное q методом LOO (критерий скользящего контроля)
+	k = 6
+	 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnLoo.PNG)
   Недостаток kNN в том, что максимальная сумма голосов может достигаться на нескольких классах одновременно. И тогда не понятно какой 
  класс выбирать. Приведем пример.
+ ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKNN.PNG)
+ ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKwnn.PNG)
+ 
+ 
+ 
+ 
+ 
