@@ -150,18 +150,20 @@ u к тому классу , для которого суммарный вес �
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKNN.PNG)
  Метод k-ближайших соседей
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKwnn.PNG)
- Метод k-ближайших взвешенных соседа
+ Метод k-ближайших взвешенных соседей
  
  Пример : [Example KwNN and KNN](https://github.com/elivam/ML0/blob/master/task1/examplekwNNandkNN.R)
  
- Достоинства метрических алгоритмов.
+ #### Достоинства метрических алгоритмов.
+ 
 • Простота реализации и возможность введения различных модификаций весовой функции  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/WI(u,x)Text.PNG).
 
 
 • Возможность интерпретировать классификацию объекта путём предъявления
 пользователю ближайшего объекта или нескольких. 
 
-Недостатки метрических алгоритмов.
+#### Недостатки метрических алгоритмов.
+
 • Приходится хранить обучающую выборку целиком. Это приводит к неэффективному расходу памяти и чрезмерному усложнению решающего правила.
 Имеет смысл отбирать минимальное подмножество эталонных объектов, действительно необходимых для классификации.
 
@@ -184,14 +186,19 @@ u к тому классу , для которого суммарный вес �
 #### Найдем оптимальное h методом LOO
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
 
+Оптимальный параметр ширины окна h=, оценка LOO=.
+
 Карта классификации 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
 
 ### Квадратическое ядро
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG)
 
 #### Найдем оптимальное h методом LOO
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+
+Оптимальный параметр ширины окна h=, оценка LOO=.
+
 
 Карта классификации 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
@@ -202,32 +209,44 @@ u к тому классу , для которого суммарный вес �
 #### Найдем оптимальное h методом LOO
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
 
+Оптимальный параметр ширины окна h=, оценка LOO=.
+
+
 Карта классификации 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
 
 ### Ядро Епанечникова 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/epanc_ker.PNG)
 
 #### Найдем оптимальное h методом LOO
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+
+Оптимальный параметр ширины окна h=, оценка LOO=.
+
 
 Карта классификации 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
 
 ### Треугольное ядро 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG)
 
 #### Найдем оптимальное h методом LOO
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+
+Оптимальный параметр ширины окна h=, оценка LOO=.
+
 
 Карта классификации 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
 
 ### Гауссовское ядро 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG)
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG)
 
 #### Найдем оптимальное h методом LOO
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
+
+Оптимальный параметр ширины окна h=, оценка LOO=.
+
 
 Карта классификации 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/.PNG
