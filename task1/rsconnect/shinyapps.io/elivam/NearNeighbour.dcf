@@ -1,0 +1,13 @@
+name: NearNeighbour
+title: NearNeighbour
+username:
+account: elivam
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1291149
+bundleId: 2473173
+url: https://elivam.shinyapps.io/NearNeighbour/
+when: 1570356301.97713
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: classMapkNN.R|classMapkwNN.R|kNN LOO.R|kNN.R|kNNLOO.R|knnShiny.R|kwn.R|kwnLOO.R

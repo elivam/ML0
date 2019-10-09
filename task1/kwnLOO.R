@@ -1,3 +1,4 @@
+
 evcliDestance <- function (x, u){
   return (sqrt(sum((x - u)^2)))
 }
@@ -29,37 +30,44 @@ kwNN <- function(xl, u, k, q)
   mainClass <- names(which.max(m))
   return (mainClass)
 }
-#нужно оптимизировать значение q
-loo <- function(xl, k, q){
-  l <- dim(xl)[1] 
-  n <- dim(xl)[1] - 1
-  
-  K<-c(0,k)
-  LOO<-rep(0,k)
-  loo<-c(0,k)
-  for(i in 1:l)
+
+looFromQ <- function(xl, k){
+  n<-dim(xl)[1]
+  LOO<-rep(0,n)
+  K<-seq(0.05,1,length.out = 20)
+  accuracy<-c(0,n)
+  for(i in 1:n)
   {
     z<-c(xl[i,1],xl[i,2])
+    
     x<-sortObjectsByDist(xl[, 1:3][-i,], z)
-    #мы знаем что q изменяется от 0 до 1
-    for(j in 1:k)
+    
+    for(j in 1:20)
     {
-      class<-kwnn(x,z,k=j,q)
+      class<-kwNN(x,z,k=19,K[j])
       if(class != xl[i,3])LOO[j]<-LOO[j]+1
     }
   }
-  for (i in 1:k)
+  for (i in 1:20)
   {
-    K[i]<-i
-    loo[i]<-LOO[i]/l
+    accuracy[i]<-LOO[i]/n
   }
-  m <- min(loo,na.rm = FALSE)
-  w <- which.min(loo)
   
-  print(w)
+  m <- min(accuracy,na.rm = FALSE)
+  w <- which.min(accuracy) 
+  t <- K[w]
+  
   print(m)
-  plot(K,loo,type = "l",xlab = "Значения k, №", ylab = "Значения LOO, %",
-       main = "Минимальная ошибка kNN")
-  points( w, m,lty="solid", pch = 21, bg = "green", asp = 1)
-  text(w, m + 0.2 , labels = (paste("min k = ", w)) )
+  print(t)
+  
+  plot(K,accuracy,type = "l",xlab = "Значения q", ylab = "Значения LOO, %",
+       main = "Поиск оптимального q")
+  points( t, m,lty="solid", pch = 21, bg = "green", asp = 1)
+  text(t+ 0.1, m ,  labels = (paste("min q = ", t)) )
 }
+
+
+u<-c(1,2)
+looFromQ(iris[,3:5], 6)
+#looFromK(iris[sample(1:150,30),3:5], 0.6)
+
