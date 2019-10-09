@@ -104,7 +104,7 @@
 В задачах с двумя классами этого можно избежать, если брать только нечётные значения k. Более общая тактика, которая годится и для случая многих классов — ввести
 строго убывающую последовательность вещественных весов  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Witext.PNG), задающих вклад i-го соседа в классификацию
 
-  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnnFormula.PNG)
+  Ccылка на shiny
  
     
  На языке R алгоритм реализован следующим образом :
@@ -115,17 +115,18 @@
  
  На языке R алгоритм реализован следующим образом :
  [classMapkwNN.R](https://github.com/elivam/ML0/blob/master/task1/classMapkwNN.R)
- Ccылка на shiny
+
  
  ###  Найти оптимальное q методом LOO (критерий скользящего контроля)
-	k = 6
+	При k = 6
+	
 	 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnLoo.PNG)
   Недостаток kNN в том, что максимальная сумма голосов может достигаться на нескольких классах одновременно. И тогда не понятно какой 
  класс выбирать. Приведем пример.
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKNN.PNG)
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKwnn.PNG)
  
+ Таким образом более
  
- 
- 
+ ##Метод парзеновского окна
  
