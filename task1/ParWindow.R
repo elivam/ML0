@@ -80,7 +80,7 @@ parzen_window <- function(xl, u, h, kerFunc) {
 
 
 colors <- c("setosa" = "#FFCC33", "versicolor" = "#0033FF",
-            "virginica" = "#CC00CC")
+            "virginica" = "#CC00CC", "" = "white")
 plot(iris[, 3:4], pch = 20, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
   
 class <- parzenWindow(xl, u, 0.5, gauss_kernel)

@@ -18,7 +18,7 @@ sortObjByDist <-function(xl, u,q = evcliDestance){
 }
 
 #Фукция прямоугольного ядра
-ker_rect <- function(dist, h) {
+ker_rect <- function(d, h) {
   if(abs(dist / h) <= 1) {
     return (1 / 2)
   } else {
@@ -27,36 +27,36 @@ ker_rect <- function(dist, h) {
 }
 
 #Функция епанечникова ядра
-ker_epanech<- function(dist, h) {
+ker_epanech<- function(d, h) {
   if(abs(dist / h) <= 1) {
-    return(3 / 4 * (1 - (dist / h)^2))
+    return(3 / 4 * (1 - (d / h)^2))
   } else {
     return(0)
   }
 }
 
 #Функция квадратического ядра
-ker_quar <- function(dist, h) {
+ker_quar <- function(d, h) {
   if(abs(dist / h) <= 1) {
-    return(15 / 16 * (1 - (dist / h)^2)^2)
+    return(15 / 16 * (1 - (d / h)^2)^2)
   } else {
     return(0)
   }
 }
 
 #Функция треугольного ядра
-triang_kernel <- function(dist, h) {
+triang_kernel <- function(d, h) {
   if(abs(dist / h) <= 1) {
-    return(1 - abs(dist / h))
+    return(1 - abs(d / h))
   } else {
     return(0)
   }
 }
 
 #Функция гауссовского ядра
-gauss_kernel <- function(dist, h) {
-  if(abs(dist / h) <= 1) {
-    return((2 * pi)^((-1 / 2) * exp(-1 / 2 * (dist / h)^2)))
+gauss_kernel <- function(d, h) {
+  if(abs(d/h) <= 1){
+    return ( (2*pi)^(-1/2) * exp(-1/2 * (d/h)^2 ) )
   } else {
     return(0)
   }
@@ -80,7 +80,7 @@ parzen_window <- function(xl, u, h, kerFunc) {
 
 classificationMapParzenWind <- function(xl, h, kernelFunc) {
   colors <- c("setosa" = "#FFCC33", "versicolor" = "#0033FF",
-              "virginica" = "#CC00CC")
+              "virginica" = "#CC00CC","" = "white" )
   plot(xl[1:2], pch = 21, col = colors[xl$Species], bg = colors[xl$Species])
   
   for (i in seq(1.0, 7.0, 0.1)) {
@@ -92,5 +92,5 @@ classificationMapParzenWind <- function(xl, h, kernelFunc) {
   }
 }
 
-classificationMapParzenWind(iris[,3:5], 0.4,ker_quar )
+classificationMapParzenWind(iris[,3:5], 0.4,gauss_kernel)
 
