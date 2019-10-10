@@ -109,5 +109,5 @@ loo <- function(xl, kerFunc) {
   points(minH, pch=21, bg="red")
 }
 
-loo(iris[,3:5],triang_kernel)
+OptHKerEpanch <- loo(iris[sample(1:150,30),3:5],ker_quar)
 
