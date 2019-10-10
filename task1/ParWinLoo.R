@@ -84,7 +84,7 @@ loo <- function(xl, kerFunc) {
   l <- dim(xl)[1]
   hLooArray <- array(0, length(seqH))
   j <- 1
-  Hseq <- seq(0.1, 5, 0.1)
+  Hseq <- seq(0.1, 4, 0.15)
   for(h in Hseq) {
     cnt <- 0
     for(i in 1:l) {
@@ -109,5 +109,5 @@ loo <- function(xl, kerFunc) {
   points(minH, pch=21, bg="red")
 }
 
-loo(iris[,3:5],ker_rect)
+loo(iris[,3:5],triang_kernel)
 

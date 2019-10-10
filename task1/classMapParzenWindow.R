@@ -86,11 +86,11 @@ classificationMapParzenWind <- function(xl, h, kernelFunc) {
   for (i in seq(1.0, 7.0, 0.1)) {
     for (j in seq(0.1, 2.5, 0.1)) {
       u <- c(i, j)
-      class <- parzenWindow(xl, u, h, kernelFunc)
+      class <- parzen_window(xl, u, h, kernelFunc)
       points(i, j, pch = 21, col = colors[class])
     }
   }
 }
 
-classificationMapParzenWind(iris[,3:5], 0.4,ker_rect )
+classificationMapParzenWind(iris[,3:5], 0.4,ker_quar )
 
