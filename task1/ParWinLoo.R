@@ -112,6 +112,6 @@
           
 }
  #LooforKer <- loo(iris[sample(1:150,10),3:5], kerFunc <-  ker_rect)
- LooforKer <- loo(iris[,3:5], kerFunc <-  gauss_kernel)
+ LooforKer <- loo(iris[,3:5], kerFunc <-  ker_epanech)
  
 

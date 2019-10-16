@@ -96,5 +96,5 @@ classificationMapParzenWind <- function(xl, h, kernelFunc) {
   }
 }
 
-classificationMapParzenWind(iris[sample(1:150,30),3:5], 0.4,ker_epanech)
+classificationMapParzenWind(iris[sample(1:150,30),3:5], 0.4,triang_kernel)
 

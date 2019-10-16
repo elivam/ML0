@@ -26,6 +26,13 @@ ui <- fluidPage(
                   value = 0.25,
                   step = 0.1
       ),
+      sliderInput("q",
+                  "Задайте значения q:",
+                  min = 0.05,
+                  max = 1,
+                  value = 0.05,
+                  step = 0.01
+      ),
       sliderInput("k",
                   "Задайте значение k:",
                   min = 1,
@@ -80,12 +87,13 @@ output$carsPlot <- renderPlot({
   x <- input$x
   y <- input$y
   k <- input$k
+  q <- input$q
   u <- c(x ,y)
   colors <- c("setosa" = "#FFCC33", "versicolor" = "#0033FF",
               "virginica" = "#CC00CC")
   plot(iris[, 3:4], pch = 21, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
   z <- c(x, y) 
-  class <- kwNN( iris[, 3:5], z, k ,0.5)
+  class <- kwNN( iris[, 3:5], z, k ,q)
   points(z[1], z[2], pch = 22, bg = colors[class], asp = 1)
 })
 }

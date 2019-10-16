@@ -49,7 +49,7 @@ u к тому классу , для которого суммарный вес �
  3. узнаем какому классу принадлежит точка А и относим u к тому классу какому принадлежит точка А
     
  На языке R алгоритм реализован следующим образом :
- [1NN.R](https://github.com/elivam/ML0/blob/master/task1/shiny.R)
+ [1NN.R](https://github.com/elivam/ML0/blob/master/task1/Shiny.R)
  
  [1NN and Shiny](https://elivam.shinyapps.io/NearNeighboard/)
  ### Метод k-ближайших соседей (knn)
@@ -244,10 +244,9 @@ u к тому классу , для которого суммарный вес �
 ### Гауссовское ядро 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG)
 
-Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)
-
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)|
 | ------------- | ------------- | 
 Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.03.| Карта классификации
+
+##  Метод потенциальных функций
 
