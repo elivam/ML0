@@ -220,48 +220,34 @@ u к тому классу , для которого суммарный вес �
 ### Квадратическое ядро
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG)
 
-#### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerQuar.PNG)
+| ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerQuar.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_quar.PNG)|
+| ------------- | ------------- | 
+Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.04.| Карта классификации
 
-Оптимальный параметр ширины окна h=0.4, оценка LOO=0.04.
-
-
-
-Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_quar.PNG)
 
 ### Ядро Епанечникова 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/epanc_ker.PNG)
 
-#### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerEpanech.PNG)
+| ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerEpanech.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_epanech.PNG)|
+| ------------- | ------------- | 
+Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.04.| Карта классификации
 
-Оптимальный параметр ширины окна h=0.4, оценка LOO=0.04.
-
-
-Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_epanech.PNG)
 
 ### Треугольное ядро 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG)
 
-#### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerTriang.PNG)
+| ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerTriang.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMApTriangl_ker.PNG)|
+| ------------- | ------------- | 
+Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.04.| Карта классификации
 
-Оптимальный параметр ширины окна h=0.4, оценка LOO=0.04.
-
-
-Карта классификации 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMApTriangl_ker.PNG)
 
 ### Гауссовское ядро 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG)
 
-#### Найдем оптимальное h методом LOO
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)
-
-Оптимальный параметр ширины окна h=0.4, оценка LOO=0.03.
-
-
 Карта классификации 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)
+
+| ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)|
+| ------------- | ------------- | 
+Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.03.| Карта классификации
+
