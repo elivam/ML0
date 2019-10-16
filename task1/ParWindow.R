@@ -2,19 +2,18 @@ evcliDestance <- function (x, u){
   return (sqrt(sum((x - u)^2)))
 }
 
-sortObjByDist <-function(xl, u,q = evcliDestance){
-  l <- dim(xl)[1] #кол-во строк 
-  n <- dim(xl)[2] - 1 #кол-во признаков
-  # в общем у xl 3 признака , х - координата , у - координата и третий - класс
-  # cl - это класс точки из выборки 
-  
-  dist <- matrix(NA, l, 2)
+sortObjByDist <- function(xl, u) {
+  l <- dim(xl)[1]
+  n <- dim(xl)[2] - 1
+  # формируем матрицу расстояний состоящую из индекса и расстояния евклида из выборки для некоторой точки
+  distances <- matrix(NA, l, 2)
   for (i in 1:l) {
-    dist[i, ] <- c(i, q(xl[i, 1:n],u)) 
+    distances[i, ] <- c(i, evcliDestance(xl[i, 1:n], u))
   }
-  sortXl <- xl[order(dist[, 2]), ]
   
-  return(sortXl)
+  # сортируем по расстоянию
+  orderedXl <- xl[order(distances[, 2]), ]
+  return (orderedXl <- cbind(orderedXl, evcliDestance = sort(distances[, 2], decreasing = FALSE)))
 }
 
 #Фукция прямоугольного ядра
@@ -55,11 +54,7 @@ triang_kernel <- function(dist, h) {
 
 #Функция гауссовского ядра
 gauss_kernel <- function(dist, h) {
-  if(abs(dist / h) <= 1) {
-    return((2 * pi)^((-1 / 2) * exp(-1 / 2 * (dist / h)^2)))
-  } else {
-    return(0)
-  }
+  return (2*pi)^(1/2) * exp((-1/2) * (dist / h)^2)
 }
 
 parzen_window <- function(xl, u, h, kerFunc) {
