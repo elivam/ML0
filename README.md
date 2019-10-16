@@ -214,8 +214,6 @@ u к тому классу , для которого суммарный вес �
 #### Найдем оптимальное h методом LOO
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerRect.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_rect.PNG)|
 | ------------- | ------------- | 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_rect.PNG)|
-
 Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.04.
 
 Карта классификации:
