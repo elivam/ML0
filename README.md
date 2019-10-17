@@ -255,3 +255,7 @@ u к тому классу , для которого суммарный вес �
 окрестность радиуса ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG)
 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG)
+
+ ширина окна ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG) 
+зависит от обучающего объекта ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG) , 
+ а не от классифицирыуемого объекта u
