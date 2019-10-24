@@ -13,15 +13,15 @@ u к тому классу , для которого суммарный вес �
 | Парзеновское окно Епанечникова  |  0.04             | h =  0.4              |
 | Треугольное парзеновское окно  |   0.04            | h =  0.4              |
 | Гауссовское парзеновское окно  |    0.03           | h =  0.4                |
-| Метод потенциальных функций   |               |                      |
-
+| Метод потенциальных функций гауссовское ядро   |               |                      |
+| Метода потенциальных функций ядро Епачечникова |                |              |
 ##  Алгоритм k-ближайших соседей                                  
 ### Метод 1: Метод ближайшего соседа (1nn)
 Алгоритм ближайшего соседа (nearest neighbor, NN) является самым простым
 алгоритмом классификации. Он относит классифицируемый объект u к тому
 классу, которому принадлежит ближайший обучающий объект:
 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/1nnFormula.PNG), 
+<img src="https://github.com/elivam/ML0/blob/master/pictures/1nnFormula.PNG"  height="92px" width="240px"/>, 
 
 где а - это алгоритм, ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xlformula.PNG) - обучающая выборка, u - классифицируемый объект, 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Yformula.PNG) - класс, которому алгоритм дает предпочтение при классификации объекта u
@@ -57,7 +57,7 @@ u к тому классу , для которого суммарный вес �
 по k ближайшим соседям.
 
 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/knnFormula.PNG)
+<img src="https://github.com/elivam/ML0/blob/master/pictures/knnFormula.PNG" height="130px" width="500px"/>
  
  **вход :** 
  
@@ -175,7 +175,7 @@ u к тому классу , для которого суммарный вес �
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Ptext.PNG), а не от ранга соседа i. Введём функцию ядра K(z), невозрастающую
 на [0,∞), и рассмотрим алгоритм
 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/parz_wind.PNG)
+<img src="https://github.com/elivam/ML0/blob/master/pictures/parz_wind.PNG" height="99px" width="570px"/>
 
 Параметр h называется шириной окна и играет примерно ту же роль, что и число соседей k. 
 
@@ -219,7 +219,7 @@ u к тому классу , для которого суммарный вес �
 
 ### Квадратическое ядро
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG" height="40px" width="160px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG" height="40px" width="176px"/>
 
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerQuar.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_quar.PNG)|
@@ -258,12 +258,12 @@ u к тому классу , для которого суммарный вес �
 и «притягивает» объект u к классу ![alt text](https://github.com/elivam/ML0/blob/master/pictures/yi.PNG) если он попадает в его
 окрестность радиуса ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG)
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG"  height="50px" width="344px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG"  height="92px" width="644px"/>
 
  ширина окна ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG) 
 зависит от обучающего объекта ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG) , 
  а не от классифицирыуемого объекта u.
  
- | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)|
+ | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindGaus.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindEpach.PNG) 
 | ------------- | ------------- | 
-Гауссовское ядро | Ядро Епанечникова
+Гауссовское ядро. Максимальное число ошибок 7 | Ядро Епанечникова. Максимальное число ошибок 
