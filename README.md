@@ -220,7 +220,9 @@ u к тому классу , для которого суммарный вес �
 ### Квадратическое ядро
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG)}.
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG" height="144px" width="42"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG" height="160px" width="35"/>
+
+
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerQuar.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_quar.PNG)|
 | ------------- | ------------- | 
 Оптимальный параметр ширины окна h=0.4, оценка LOO= 0.04.| Карта классификации
