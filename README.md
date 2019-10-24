@@ -21,7 +21,7 @@ u к тому классу , для которого суммарный вес �
 алгоритмом классификации. Он относит классифицируемый объект u к тому
 классу, которому принадлежит ближайший обучающий объект:
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/1nnFormula.PNG"  height="92px" width="240px"/>, 
+<img src="https://github.com/elivam/ML0/blob/master/pictures/1nnFormula.PNG"  height="65px" width="168px"/>, 
 
 где а - это алгоритм, ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xlformula.PNG) - обучающая выборка, u - классифицируемый объект, 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Yformula.PNG) - класс, которому алгоритм дает предпочтение при классификации объекта u
@@ -57,7 +57,7 @@ u к тому классу , для которого суммарный вес �
 по k ближайшим соседям.
 
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/knnFormula.PNG" height="130px" width="500px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/knnFormula.PNG" height="91px" width="350px"/>
  
  **вход :** 
  
@@ -175,7 +175,7 @@ u к тому классу , для которого суммарный вес �
  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Ptext.PNG), а не от ранга соседа i. Введём функцию ядра K(z), невозрастающую
 на [0,∞), и рассмотрим алгоритм
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/parz_wind.PNG" height="99px" width="570px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/parz_wind.PNG" height="70px" width="399px"/>
 
 Параметр h называется шириной окна и играет примерно ту же роль, что и число соседей k. 
 
@@ -266,4 +266,4 @@ u к тому классу , для которого суммарный вес �
  
  | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindGaus.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindEpach.PNG) 
 | ------------- | ------------- | 
-Гауссовское ядро. Максимальное число ошибок 7 | Ядро Епанечникова. Максимальное число ошибок 
+Гауссовское ядро. Максимальное число ошибок 7 | Ядро Епанечникова. Максимальное число ошибок 5
