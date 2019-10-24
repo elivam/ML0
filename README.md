@@ -124,9 +124,11 @@ u к тому классу , для которого суммарный вес �
   
    Недостаток kNN в том, что максимальная сумма голосов может достигаться на нескольких классах одновременно.
 В задачах с двумя классами этого можно избежать, если брать только нечётные значения k. Более общая тактика, которая годится и для случая многих классов — ввести
-строго убывающую последовательность вещественных весов  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Witext.PNG), задающих вклад i-го соседа в классификацию
+строго убывающую последовательность вещественных весов  ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Witext.PNG), задающая вклад i-го соседа при классификации объекта u.
 	![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnnForm.PNG)
-	
+	,где ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Witext.PNG) функция веса, строго убывающая последовательность вещественных весов, 
+	 Например: ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Qtext.PNG) , где q из диапазона (0,1)
+ 
  На языке R алгоритм реализован следующим образом :
  [kwNN.R](https://github.com/elivam/ML0/blob/master/task1/kwn.R)
  
@@ -134,9 +136,7 @@ u к тому классу , для которого суммарный вес �
  
  Далее построим карту классификации для метода kwNN:
 	![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapkwNN.PNG)
-	,где ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Witext.PNG) функция веса, строго убывающая последовательность вещественных весов, 
-	задающая вклад i-го соседа при классификации объекта u. Например: ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Qtext.PNG) , где q из диапазона (0,1)
- 
+	
  На языке R алгоритм реализован следующим образом :
  [classMapkwNN.R](https://github.com/elivam/ML0/blob/master/task1/classMapkwNN.R)
 	
@@ -218,9 +218,8 @@ u к тому классу , для которого суммарный вес �
 
 
 ### Квадратическое ядро
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG)}.
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG" height="35px" width="160px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG" height="40px" width="160px"/>
 
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerQuar.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_quar.PNG)|
@@ -229,7 +228,8 @@ u к тому классу , для которого суммарный вес �
 
 
 ### Ядро Епанечникова 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/epanc_ker.PNG)
+
+<img src="https://github.com/elivam/ML0/blob/master/pictures/epanc_ker.PNG" height="40px" width="165px"/>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerEpanech.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_epanech.PNG)|
 | ------------- | ------------- | 
@@ -237,7 +237,7 @@ u к тому классу , для которого суммарный вес �
 
 
 ### Треугольное ядро 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG)
+<img src="https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG" height="40px" width="165px"/>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerTriang.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMApTriangl_ker.PNG)|
 | ------------- | ------------- | 
@@ -245,7 +245,8 @@ u к тому классу , для которого суммарный вес �
 
 
 ### Гауссовское ядро 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG)
+
+<img src="https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG" height="40px" width="144px"/>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)|
 | ------------- | ------------- | 
@@ -257,8 +258,12 @@ u к тому классу , для которого суммарный вес �
 и «притягивает» объект u к классу ![alt text](https://github.com/elivam/ML0/blob/master/pictures/yi.PNG) если он попадает в его
 окрестность радиуса ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG)
 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG)
+<img src="https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG"height="50px" width="344px"/>
 
  ширина окна ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG) 
 зависит от обучающего объекта ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG) , 
- а не от классифицирыуемого объекта u
+ а не от классифицирыуемого объекта u.
+ 
+ | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)|
+| ------------- | ------------- | 
+Гауссовское ядро | Ядро Епанечникова
