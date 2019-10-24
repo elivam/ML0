@@ -218,7 +218,7 @@ u к тому классу , для которого суммарный вес �
 
 
 ### Квадратическое ядро
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG)
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG){:height="144px" width="42px"}.
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerQuar.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_quar.PNG)|
 | ------------- | ------------- | 

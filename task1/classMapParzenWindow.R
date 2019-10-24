@@ -68,12 +68,7 @@ parzen_window <- function(xl, u, h, kerFunc) {
   for (i in seq(1:l)) {
     counts[classes[i]] <- counts[classes[i]] + kerFunc(orderedXl[i, 4], h)
   }
-  
-  if(class==0)class<-"not-class"
-  else  
-  class <- names(which.max(counts))
- 
-  
+
   if(sum(counts) > 0) {
     class <- names(which.max(counts))
   } else {
