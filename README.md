@@ -237,7 +237,7 @@ u к тому классу , для которого суммарный вес �
 
 
 ### Треугольное ядро 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG" height="40px" width="165px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG" height="35px" width="165px"/>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerTriang.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMApTriangl_ker.PNG)|
 | ------------- | ------------- | 
@@ -246,7 +246,7 @@ u к тому классу , для которого суммарный вес �
 
 ### Гауссовское ядро 
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG" height="40px" width="144px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG" height="35px" width="144px"/>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)|
 | ------------- | ------------- | 
@@ -258,7 +258,7 @@ u к тому классу , для которого суммарный вес �
 и «притягивает» объект u к классу ![alt text](https://github.com/elivam/ML0/blob/master/pictures/yi.PNG) если он попадает в его
 окрестность радиуса ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG)
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG"height="50px" width="344px"/>
+<img src="https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG"  height="50px" width="344px"/>
 
  ширина окна ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG) 
 зависит от обучающего объекта ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG) , 
