@@ -1,8 +1,8 @@
 # Метрические алгоритмы классификации
 Метрические методы обучения методы, основанные на анализе сходтства объектов.
-Метрические алгоритмы классификации с обучающей выборкой ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xlformula.PNG) относят
+Метрические алгоритмы классификации с обучающей выборкой <a href="https://www.codecogs.com/eqnedit.php?latex=X^l" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^l" title="X^l" /></a> относят
 u к тому классу , для которого суммарный вес ближайших обучающих объектов 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/WI(u,x)Text.PNG) наибольший.
+<a href="https://www.codecogs.com/eqnedit.php?latex=w(i,u)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w(i,u)" title="w(i,u)" /></a> наибольший.
 
 | Метод         | Точность (LOO) |   Значение параметра |
 | ------------- | ------------- | -------------------- |
@@ -30,14 +30,14 @@ u к тому классу , для которого суммарный вес �
 
  **вход :** 
  
- Xl: matrix 
+ <a href="https://www.codecogs.com/eqnedit.php?latex=X^l" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^l" title="X^l" /></a>: matrix 
  
      обучающая выборка, на последнем месте метка класса;
- u:  vector
+ <a href="https://www.codecogs.com/eqnedit.php?latex=u" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u" title="u" /></a>:  vector
  
      классифицируемый объект;
 	 
- q : number
+ <a href="https://www.codecogs.com/eqnedit.php?latex=q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q" title="q" /></a>: number
  
      определить функцию расстояния;
  
@@ -61,19 +61,19 @@ u к тому классу , для которого суммарный вес �
  
  **вход :** 
  
- Xl: matrix 
+ <a href="https://www.codecogs.com/eqnedit.php?latex=X^l" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^l" title="X^l" /></a>: matrix 
  
      обучающая выборка, на последнем месте метка класса
 	 
- u:  vector
+ <a href="https://www.codecogs.com/eqnedit.php?latex=u" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u" title="u" /></a>:  vector
  
      классифицируемый объект
 	 
- q : расстояниe
+ <a href="https://www.codecogs.com/eqnedit.php?latex=q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q" title="q" /></a>: расстояниe
  
      определить функцию расстояния
 	 
- k:  
+ <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>:  
  
 	кол-во соседей  
 	 
@@ -103,11 +103,11 @@ u к тому классу , для которого суммарный вес �
   
  **вход :** 
  
- Xl: matrix 
+ <a href="https://www.codecogs.com/eqnedit.php?latex=X^l" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^l" title="X^l" /></a>: matrix 
  
      обучающая выборка, на последнем месте метка класса
 	 
- k:  кол-во соседей
+ <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>:  кол-во соседей
  
      определить оптимальное кол-во требуемых соседей , используя LOO 
 	 
@@ -157,24 +157,24 @@ u к тому классу , для которого суммарный вес �
  Ещё один способ задать веса соседям — определить <a href="https://www.codecogs.com/eqnedit.php?latex=w_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_i" title="w_i" /></a> как функцию от расстояния 
  <a href="https://www.codecogs.com/eqnedit.php?latex=p(u,x_u^{(i)})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(u,x_u^{(i)})" title="p(u,x_u^{(i)})" /></a>, а не от ранга соседа <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>. Введём функцию ядра <a href="https://www.codecogs.com/eqnedit.php?latex=K(z)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(z)" title="K(z)" /></a>, невозрастающую
 на <a href="https://www.codecogs.com/eqnedit.php?latex=[0,&space;\infty]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?[0,&space;\infty]" title="[0, \infty]" /></a>, и рассмотрим алгоритм
-<a href="https://www.codecogs.com/eqnedit.php?latex=a(u;X^l,h,K)=&space;arm&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_u^{(i)}&space;=&space;y]&space;K(\frac{p(u,x_u^{(i)}}{h}&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(u;X^l,h,K)=&space;arm&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_u^{(i)}&space;=&space;y]&space;K(\frac{p(u,x_u^{(i)}}{h}&space;)" title="a(u;X^l,h,K)= arm \max _{y \in Y} \sum _{i=1}^l[y_u^{(i)} = y] K(\frac{p(u,x_u^{(i)}}{h} )" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(u;X^l,h,K)=&space;arg&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_u^{(i)}&space;=&space;y]&space;K(\frac{p(u,x_u^{(i)}}{h}&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(u;X^l,h,K)=&space;arg&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_u^{(i)}&space;=&space;y]&space;K(\frac{p(u,x_u^{(i)}}{h}&space;)" title="a(u;X^l,h,K)= arg \max _{y \in Y} \sum _{i=1}^l[y_u^{(i)} = y] K(\frac{p(u,x_u^{(i)}}{h} )" /></a>
 
 Параметр <a href="https://www.codecogs.com/eqnedit.php?latex=h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h" title="h" /></a> называется шириной окна и играет примерно ту же роль, что и число соседей <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>. 
 
  **вход :** 
  
- Xl: matrix 
+ <a href="https://www.codecogs.com/eqnedit.php?latex=X^l" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^l" title="X^l" /></a>: matrix 
  
      обучающая выборка, на последнем месте метка класса;
- u:  vector
+ <a href="https://www.codecogs.com/eqnedit.php?latex=u" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u" title="u" /></a>:  vector
  
      классифицируемый объект;
 	 
- q : расстояние
+ <a href="https://www.codecogs.com/eqnedit.php?latex=q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q" title="q" /></a>: расстояние
  
      определить функцию расстояния;
 	 
- h : расстояние
+ <a href="https://www.codecogs.com/eqnedit.php?latex=h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h" title="h" /></a>: расстояние
  
 	определить ширину окна;
  
@@ -240,8 +240,8 @@ u к тому классу , для которого суммарный вес �
 и «притягивает» объект u к классу ![alt text](https://github.com/elivam/ML0/blob/master/pictures/yi.PNG) если он попадает в его
 окрестность радиуса ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG)
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/potenFunck.PNG"  height="92px" width="644px"/>
-
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(u;X^l,h,K)=&space;arg&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_i&space;=&space;y]&space;\gamma_i&space;K(\frac{p(u,x_i)}{h_i}&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(u;X^l,h,K)=&space;arg&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_i&space;=&space;y]&space;\gamma_i&space;K(\frac{p(u,x_i)}{h_i}&space;)" title="a(u;X^l,h,K)= arg \max _{y \in Y} \sum _{i=1}^l[y_i = y] \gamma_i K(\frac{p(u,x_i)}{h_i} )" /></a>
+ 
  ширина окна ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG) 
 зависит от обучающего объекта ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG) , 
  а не от классифицирыуемого объекта u.
