@@ -128,9 +128,8 @@ u к тому классу , для которого суммарный вес �
 строго убывающую последовательность вещественных весов  <a href="https://www.codecogs.com/eqnedit.php?latex=w_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_i" title="w_i" /></a>, задающая вклад i-го соседа при классификации объекта <a href="https://www.codecogs.com/eqnedit.php?latex=u" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u" title="u" /></a>.
 	
 	
-	![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnnForm.PNG)
-	,где <a href="https://www.codecogs.com/eqnedit.php?latex=w_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_i" title="w_i" /></a> функция веса, строго убывающая последовательность вещественных весов, 
-	 Например: <a href="https://www.codecogs.com/eqnedit.php?latex=q^i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q^i" title="q^i" /></a> , где <a href="https://www.codecogs.com/eqnedit.php?latex=q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q" title="q" /></a> из диапазона (0,1)
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnnForm.PNG),где <a href="https://www.codecogs.com/eqnedit.php?latex=w_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_i" title="w_i" /></a> функция веса, строго убывающая последовательность вещественных весов, 
+Например: <a href="https://www.codecogs.com/eqnedit.php?latex=q^i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q^i" title="q^i" /></a> , где <a href="https://www.codecogs.com/eqnedit.php?latex=q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q" title="q" /></a> из диапазона (0,1)
  
  На языке R алгоритм реализован следующим образом :
  [kwNN.R](https://github.com/elivam/ML0/blob/master/task1/kwn.R)
@@ -147,22 +146,20 @@ u к тому классу , для которого суммарный вес �
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/kwnLoo.PNG)
   Недостаток kNN в том, что максимальная сумма голосов может достигаться на нескольких классах одновременно. И тогда не понятно какой 
  класс выбирать. Приведем пример.
- |![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKNN.PNG)|
- Метод k-ближайших соседей|
- |---------|--------|
- ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKwnn.PNG)|
- Метод k-ближайших взвешенных соседей|
+ 
+ | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKNN.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/exampleKwnn.PNG)|
+| ------------- | ------------- | 
+Метод k-ближайших соседей| Метод k-ближайших взвешенных соседей
  
  Пример : [Example KwNN and KNN](https://github.com/elivam/ML0/blob/master/task1/examplekwNNandkNN.R)
  
  ##  Метод парзеновского окна
- Ещё один способ задать веса соседям — определить ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Witext.PNG). как функцию от расстояния 
- ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Ptext.PNG), а не от ранга соседа i. Введём функцию ядра K(z), невозрастающую
-на [0,∞), и рассмотрим алгоритм
+ Ещё один способ задать веса соседям — определить <a href="https://www.codecogs.com/eqnedit.php?latex=w_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w_i" title="w_i" /></a> как функцию от расстояния 
+ <a href="https://www.codecogs.com/eqnedit.php?latex=p(u,x_u^{(i)})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(u,x_u^{(i)})" title="p(u,x_u^{(i)})" /></a>, а не от ранга соседа <a href="https://www.codecogs.com/eqnedit.php?latex=i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i" title="i" /></a>. Введём функцию ядра <a href="https://www.codecogs.com/eqnedit.php?latex=K(z)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(z)" title="K(z)" /></a>, невозрастающую
+на <a href="https://www.codecogs.com/eqnedit.php?latex=[0,&space;\infty]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?[0,&space;\infty]" title="[0, \infty]" /></a>, и рассмотрим алгоритм
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(u;X^l,h,K)=&space;arm&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_u^{(i)}&space;=&space;y]&space;K(\frac{p(u,x_u^{(i)}}{h}&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(u;X^l,h,K)=&space;arm&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_u^{(i)}&space;=&space;y]&space;K(\frac{p(u,x_u^{(i)}}{h}&space;)" title="a(u;X^l,h,K)= arm \max _{y \in Y} \sum _{i=1}^l[y_u^{(i)} = y] K(\frac{p(u,x_u^{(i)}}{h} )" /></a>
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/parz_wind.PNG" height="70px" width="399px"/>
-
-Параметр h называется шириной окна и играет примерно ту же роль, что и число соседей k. 
+Параметр <a href="https://www.codecogs.com/eqnedit.php?latex=h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h" title="h" /></a> называется шириной окна и играет примерно ту же роль, что и число соседей <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>. 
 
  **вход :** 
  
@@ -282,7 +279,6 @@ u к тому классу , для которого суммарный вес �
 и дисперсией стремится к нормальному распределению. 
 
 Всего возможно 3 случая : 
-
 1) Если признаки некоррелируемы, т.е. коварициаонаая матрица - диагональна. И линии уровня
 имеют форму эллипсоидов с центром в µ и осями параллельными осям координат.
 
