@@ -264,12 +264,12 @@ u к тому классу , для которого суммарный вес �
 зависит от обучающего объекта ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG) , 
  а не от классифицирыуемого объекта u.
  
- | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindGauS.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindEpach.PNG) 
+ | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/potetialWindGauS.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindEpach.PNG) 
 | ------------- | ------------- | 
 Гауссовское ядро. Максимальное число ошибок 5 | Ядро Епанечникова. Максимальное число ошибок 6
 
 Карта классификации : 
- ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapPotGaus.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapPotentEpach.PNG) 
+| ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapPotGaus.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapPotentEpach.PNG) 
 | ------------- | ------------- |
 
 
