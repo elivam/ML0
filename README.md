@@ -20,13 +20,12 @@ u к тому классу , для которого суммарный вес �
 Алгоритм ближайшего соседа (nearest neighbor, NN) является самым простым
 алгоритмом классификации. Он относит классифицируемый объект u к тому
 классу, которому принадлежит ближайший обучающий объект:
-
-<img src="https://github.com/elivam/ML0/blob/master/pictures/1nnFormula.PNG"  height="65px" width="168px"/>, 
+ 
 <a href="https://www.codecogs.com/eqnedit.php?latex=a(u;X^l)&space;=&space;y_u^{(1)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(u;X^l)&space;=&space;y_u^{(1)}" title="a(u;X^l) = y_u^{(1)}" /></a>
 
-
-где а - это алгоритм, ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xlformula.PNG) - обучающая выборка, u - классифицируемый объект, 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/Yformula.PNG) - класс, которому алгоритм дает предпочтение при классификации объекта u
+где <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a> 
+ - это алгоритм, <a href="https://www.codecogs.com/eqnedit.php?latex=X^l" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^l" title="X^l" /></a> - обучающая выборка, <a href="https://www.codecogs.com/eqnedit.php?latex=u" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u" title="u" /></a> - классифицируемый объект, 
+<a href="https://www.codecogs.com/eqnedit.php?latex=y_u^{(1)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_u^{(1)}" title="y_u^{(1)}" /></a> - класс, которому алгоритм дает предпочтение при классификации объекта u
 
 Обучение NN сводится к запоминанию выборки.
 
