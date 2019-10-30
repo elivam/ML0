@@ -69,11 +69,11 @@ u к тому классу , для которого суммарный вес �
  
      классифицируемый объект
 	 
- <a href="https://www.codecogs.com/eqnedit.php?latex=q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q" title="q" /></a>: расстояниe
+ <a href="https://www.codecogs.com/eqnedit.php?latex=q" target="_blank"><img src="https://latex.codecogs.com/gif.latex?q" title="q" /></a>: number
  
      определить функцию расстояния
 	 
- <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>:  
+ <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>: number  
  
 	кол-во соседей  
 	 
@@ -107,7 +107,7 @@ u к тому классу , для которого суммарный вес �
  
      обучающая выборка, на последнем месте метка класса
 	 
- <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>:  кол-во соседей
+ <a href="https://www.codecogs.com/eqnedit.php?latex=k" target="_blank"><img src="https://latex.codecogs.com/gif.latex?k" title="k" /></a>:  number
  
      определить оптимальное кол-во требуемых соседей , используя LOO 
 	 
@@ -201,8 +201,7 @@ u к тому классу , для которого суммарный вес �
 
 ### Квадратическое ядро
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/sqare.PNG" height="40px" width="176px"/>
-
+<a href="https://www.codecogs.com/eqnedit.php?latex=Q(Z)=\frac{15}{16}(1-z^2)^2&space;\cdot[|z&space;\leq&space;1|]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Q(Z)=\frac{15}{16}(1-z^2)^2&space;\cdot[|z&space;\leq&space;1|]" title="Q(Z)=\frac{15}{16}(1-z^2)^2 \cdot[|z \leq 1|]" /></a>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerQuar.PNG)       | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_quar.PNG)|
 | ------------- | ------------- | 
@@ -211,7 +210,7 @@ u к тому классу , для которого суммарный вес �
 
 ### Ядро Епанечникова 
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/epanc_ker.PNG" height="40px" width="165px"/>
+<a href="https://www.codecogs.com/eqnedit.php?latex=E(Z)=\frac{3}{4}(1-z^2)\cdot[|z&space;\leq&space;1|]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E(Z)=\frac{3}{4}(1-z^2)\cdot[|z&space;\leq&space;1|]" title="E(Z)=\frac{3}{4}(1-z^2)\cdot[|z \leq 1|]" /></a>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerEpanech.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapker_epanech.PNG)|
 | ------------- | ------------- | 
@@ -219,7 +218,7 @@ u к тому классу , для которого суммарный вес �
 
 
 ### Треугольное ядро 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/triangle.PNG" height="35px" width="165px"/>
+<a href="https://www.codecogs.com/eqnedit.php?latex=T(Z)=(1&space;-&space;|z|)\cdot&space;[|z&space;\leq&space;1|]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?T(Z)=(1&space;-&space;|z|)\cdot&space;[|z&space;\leq&space;1|]" title="T(Z)=(1 - |z|)\cdot [|z \leq 1|]" /></a>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerTriang.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMApTriangl_ker.PNG)|
 | ------------- | ------------- | 
@@ -228,7 +227,7 @@ u к тому классу , для которого суммарный вес �
 
 ### Гауссовское ядро 
 
-<img src="https://github.com/elivam/ML0/blob/master/pictures/Gaus_ker.PNG" height="35px" width="144px"/>
+<a href="https://www.codecogs.com/eqnedit.php?latex=G(Z)=&space;dnorm(z)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?G(Z)=&space;dnorm(z)" title="G(Z)= dnorm(z)" /></a>
 
 | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/LooKerGauss.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/classMapKerGauss.PNG)|
 | ------------- | ------------- | 
@@ -236,15 +235,14 @@ u к тому классу , для которого суммарный вес �
 
 ##  Метод потенциальных функций
  Допустим теперь, что ядро помещается в каждый
-обучающий объект ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG)  
-и «притягивает» объект u к классу ![alt text](https://github.com/elivam/ML0/blob/master/pictures/yi.PNG) если он попадает в его
-окрестность радиуса ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG)
+обучающий объект <a href="https://www.codecogs.com/eqnedit.php?latex=x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_i" title="x_i" /></a>  и «притягивает» объект u к классу <a href="https://www.codecogs.com/eqnedit.php?latex=y_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_i" title="y_i" /></a>если он попадает в его
+окрестность радиуса <a href="https://www.codecogs.com/eqnedit.php?latex=h_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h_i" title="h_i" /></a>
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=a(u;X^l,h,K)=&space;arg&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_i&space;=&space;y]&space;\gamma_i&space;K(\frac{p(u,x_i)}{h_i}&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(u;X^l,h,K)=&space;arg&space;\max&space;_{y&space;\in&space;Y}&space;\sum&space;_{i=1}^l[y_i&space;=&space;y]&space;\gamma_i&space;K(\frac{p(u,x_i)}{h_i}&space;)" title="a(u;X^l,h,K)= arg \max _{y \in Y} \sum _{i=1}^l[y_i = y] \gamma_i K(\frac{p(u,x_i)}{h_i} )" /></a>
  
- ширина окна ![alt text](https://github.com/elivam/ML0/blob/master/pictures/hi.PNG) 
-зависит от обучающего объекта ![alt text](https://github.com/elivam/ML0/blob/master/pictures/Xitext.PNG) , 
- а не от классифицирыуемого объекта u.
+ ширина окна <a href="https://www.codecogs.com/eqnedit.php?latex=h_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h_i" title="h_i" /></a>
+зависит от обучающего объекта <a href="https://www.codecogs.com/eqnedit.php?latex=x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_i" title="x_i" /></a> , 
+ а не от классифицирыуемого объекта <a href="https://www.codecogs.com/eqnedit.php?latex=u" target="_blank"><img src="https://latex.codecogs.com/gif.latex?u" title="u" /></a>.
  
  | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/potetialWindGauS.PNG)      | ![alt text](https://github.com/elivam/ML0/blob/master/pictures/parzenWindEpach.PNG) 
 | ------------- | ------------- | 
@@ -270,7 +268,7 @@ u к тому классу , для которого суммарный вес �
 
  
 
-# Баесовские алгоритмы классификации
+# Байесовские алгоритмы классификации
 
 ## Линии уровня нормального распределения 
 Случайная величина x  имеет нормальное (гауссовское) распределение с параметрами 
