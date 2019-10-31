@@ -282,6 +282,9 @@ u к тому классу , для которого суммарный вес �
 ## Линии уровня нормального распределения 
 Случайная величина <a href="https://www.codecogs.com/eqnedit.php?latex=x&space;\in&space;R" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x&space;\in&space;R" title="x \in R" /></a>  имеет нормальное (гауссовское) распределение с параметрами 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /></a> и <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma^2" title="\sigma^2" /></a>, если ее плотность задается выражением:
+
+N(x;\mu,\Sigma) = \frac{1}{(2\pi)^n |\Sigma|} \exp (-\frac{1}{2}(x - \mu)^T \Sigma ^{-1}(x - \mu)) 
+
 По центральной предельной теореме среднее арифметическое независимых случайных величин с ограниченными мат.ожиданием
 и дисперсией стремится к нормальному распределению. 
 
