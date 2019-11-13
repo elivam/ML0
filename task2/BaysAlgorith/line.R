@@ -27,8 +27,7 @@ ui <- fluidPage(
     mainPanel(
       HTML("<center><h1><b>График линий уровня нормального распределения</b></h1>"),
       HTML("<img src=\"  https://sun9-4.userapi.com/c853528/v853528186/15c6b0/blI7kVCoJE0.jpg   \"></center>"),
-      #HTML("<a href=\"https://www.codecogs.com/eqnedit.php?latex=N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^2&space;|S|}&space;\exp&space;\left&space;(&space;-&space;\frac{1}{2}(x&space;-&space;\mu)^T&space;S&space;^{-1}(x&space;-&space;\mu)&space;\right&space;),&space;S&space;=&space;\binom{x~~~~~\mu}{\mu~~~~~y}\" target=\"_blank\"><img src=\"https://latex.codecogs.com/gif.latex?N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^2&space;|S|}&space;\exp&space;\left&space;(&space;-&space;\frac{1}{2}(x&space;-&space;\mu)^T&space;S&space;^{-1}(x&space;-&space;\mu)&space;\right&space;),&space;S&space;=&space;\binom{x~~~~~\mu}{\mu~~~~~y}\" title=\"N(x;\mu,\Sigma) = \frac{1}{(2\pi)^2 |S|} \exp \left ( - \frac{1}{2}(x - \mu)^T S ^{-1}(x - \mu) \right ), S = \binom{x~~~~~\mu}{\mu~~~~~y}\" /></a></center>"),
-      HTML("<h4>Ковариционная матрица</h4>"),
+      HTML("<h5>Ковариционная матрица <img src=\"  https://sun9-59.userapi.com/c858220/v858220119/e398c/s4TAizoM8to.jpg  \"> </h5>"),
       textOutput(outputId = "sigmaMess1"),
       textOutput(outputId = "sigmaMess2"),
       textOutput(outputId = "covMessage"),
