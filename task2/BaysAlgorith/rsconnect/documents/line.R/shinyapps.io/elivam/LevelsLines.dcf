@@ -5,9 +5,9 @@ account: elivam
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1436185
-bundleId: 2586947
+bundleId: 2588246
 url: https://elivam.shinyapps.io/LevelsLines/
-when: 1573673294.16343
+when: 1573711569.02183
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: 1.PNG|Code.png
+ignoredFiles: Code.png

@@ -5,29 +5,29 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       sliderInput("x",
-                  "Значение x :",
+                  "Значение [1,1] :",
                   min = 0,
                   max = 5,
                   value = 1,
-                  step = 1),
+                  step = 0.5),
       sliderInput("mu",
-                  "Значение μ :",
+                  "Значение [1,2] и [2,1] :",
                   min = 0,
                   max = 5,
                   value = 0,
-                  step = 1),
+                  step = 0.5),
       sliderInput("y",
-                  "Значение y :",
+                  "Значение [2,2] :",
                   min = 0,
                   max = 5,
                   value = 1,
-                  step = 1         
+                  step = 0.5         
       )
     ),
     mainPanel(
       HTML("<center><h1><b>График линий уровня нормального распределения</b></h1>"),
-      HTML("<img src=\"  https://sun9-4.userapi.com/c853528/v853528186/15c6b0/blI7kVCoJE0.jpg   \"></center>"),
-      HTML("<h5>Ковариционная матрица <img src=\"  https://sun9-59.userapi.com/c858220/v858220119/e398c/s4TAizoM8to.jpg  \"> </h5>"),
+      HTML("<img src=\"  https://sun9-31.userapi.com/c856036/v856036153/1674f5/Qa84Boha90w.jpg   \">"),
+      HTML("<h5>Ковариационная матрица <img src=\"  https://sun9-59.userapi.com/c858220/v858220119/e398c/s4TAizoM8to.jpg  \"> </h5>"),
       textOutput(outputId = "sigmaMess1"),
       textOutput(outputId = "sigmaMess2"),
       textOutput(outputId = "covMessage"),
