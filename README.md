@@ -280,7 +280,7 @@ u к тому классу , для которого суммарный вес �
 # Байесовские алгоритмы классификации
 
 ## Линии уровня нормального распределения 
-Случайная величина <a href="https://www.codecogs.com/eqnedit.php?latex=x&space;\in&space;R" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x&space;\in&space;R" title="x \in R" /></a>  имеет нормальное (гауссовское) распределение с параметрами 
+Случайная величина <img src="https://latex.codecogs.com/gif.latex?x&space;\in&space;R" title="x \in R" />  имеет нормальное (гауссовское) распределение с параметрами 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /></a> и <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma^2" title="\sigma^2" /></a>, если ее плотность задается выражением:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" title="N(x;\mu,\Sigma) = \frac{1}{(2\pi)^n |\Sigma|} \exp (-\frac{1}{2}(x - \mu)^T \Sigma ^{-1}(x - \mu))" /></a>
@@ -306,8 +306,7 @@ u к тому классу , для которого суммарный вес �
 Наивный байесовский классификатор – 
 это семейство алгоритмов классификации, которые принимают одно допущение: Каждый параметр классифицируемых данных рассматривается
 независимо от других параметров класса, т.е. все признаки независимы и нормально распределены с математическим ожиданием 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\mu" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /></a>
-и дисперисией  ,отличающися для разных классов.
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /></a>и дисперисией  ,отличающися для разных классов.
 
 Допускается предположение о том, что все параметры набора данных независимы. Обычно так не бывает.
 
