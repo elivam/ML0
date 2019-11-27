@@ -304,9 +304,33 @@ u к тому классу , для которого суммарный вес �
 ## Наивный байесовский классификатор
 
 Наивный байесовский классификатор – 
-это семейство алгоритмов классификации, которые принимают одно допущение: Каждый параметр классифицируемых данных рассматривается
+это семейство алгоритмов классификации, которые принимают одно допущение: каждый параметр классифицируемых данных рассматривается
 независимо от других параметров класса, т.е. все признаки независимы и нормально распределены с математическим ожиданием 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /></a>и дисперисией  ,отличающися для разных классов.
 
-Допускается предположение о том, что все параметры набора данных независимы. Обычно так не бывает.
+Допускается предположение о том, что все параметры набора данных независимы. Обычно так не бывает. 
+Все случаи рассмотрены по следущей ссылке  
+[Shiny](https://elivam.shinyapps.io/BaysNaiv/)
 
+##Plug-in алгоритм
+Нормальный дискриминантный анализ — это один из вариантов
+байесовской классификации, в котором в качестве моделей
+восстанавливаемых плотностей рассматривают многомерные
+нормальные плотности:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" title="N(x;\mu,\Sigma) = \frac{1}{(2\pi)^n |\Sigma|} \exp (-\frac{1}{2}(x - \mu)^T \Sigma ^{-1}(x - \mu))" /></a>
+
+,где 
+<a href="https://www.codecogs.com/eqnedit.php?latex=N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" title="N(x;\mu,\Sigma) = \frac{1}{(2\pi)^n |\Sigma|} \exp (-\frac{1}{2}(x - \mu)^T \Sigma ^{-1}(x - \mu))" /></a>
+, <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;\in&space;R&space;^&space;{~n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;\in&space;R&space;^&space;{~n}" title="\mu \in R ^ {~n}" /></a>   — математическое ожидание (центр),
+<a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma&space;\in&space;R&space;^&space;{~n&space;\times&space;n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma&space;\in&space;R&space;^&space;{~n&space;\times&space;n}" title="\Sigma \in R ^ {~n \times n}" /></a>  —
+ковариационная матрица. Предполагается, что матрица <a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma" title="\Sigma" /></a> симметричная, невырожденная, положительно определённая.
+
+Восстанавливая параметры нормального распределения  <a href="https://www.codecogs.com/eqnedit.php?latex=\mu_y,&space;\Sigma_y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu_y,&space;\Sigma_y" title="\mu_y, \Sigma_y" /></a> для каждого класса <a href="https://www.codecogs.com/eqnedit.php?latex=y&space;\in&space;Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y&space;\in&space;Y" title="y \in Y" /></a> и подставляя в формулу оптимального
+байесовского классификатора восстановленные плотности, получим подстановочный (plug-in) алгоритм классификации.
+
+Параметры нормального распределения оценивают согласно принципа максимума правдоподобия:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu_y&space;=&space;\frac&space;{1}{l_y}&space;\sum_{x_{i}:y_{i}=y}&space;x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu_y&space;=&space;\frac&space;{1}{l_y}&space;\sum_{x_{i}:y_{i}=y}&space;x_i" title="\mu_y = \frac {1}{l_y} \sum_{x_{i}:y_{i}=y} x_i" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma_y&space;=&space;\frac&space;{1}{l_y&space;-&space;1}&space;\sum_{x_{i}:y_{i}=y}&space;(x_i&space;-&space;\mu_y)(x_i&space;-&space;\mu_y)^T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma_y&space;=&space;\frac&space;{1}{l_y&space;-&space;1}&space;\sum_{x_{i}:y_{i}=y}&space;(x_i&space;-&space;\mu_y)(x_i&space;-&space;\mu_y)^T" title="\Sigma_y = \frac {1}{l_y - 1} \sum_{x_{i}:y_{i}=y} (x_i - \mu_y)(x_i - \mu_y)^T" /></a>

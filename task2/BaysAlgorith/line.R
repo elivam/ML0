@@ -5,19 +5,19 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       sliderInput("x",
-                  "Значение [1,1] :",
+                  "Задайте значение [1,1] ковариационной матрицы:",
                   min = 0,
                   max = 5,
                   value = 1,
                   step = 0.5),
       sliderInput("mu",
-                  "Значение [1,2] и [2,1] :",
+                  "Задайте значения [1,2] и [2,1] ковариационной матрицы:",
                   min = 0,
                   max = 5,
                   value = 0,
                   step = 0.5),
       sliderInput("y",
-                  "Значение [2,2] :",
+                  "Задайте значение [2,2] ковариационной матрицы:",
                   min = 0,
                   max = 5,
                   value = 1,
@@ -41,12 +41,14 @@ server <- function(input, output) {
   
   # output$carsPlot <- renderPlot({
   output$plot = renderPlot ({
+    
     x <- input$x
     mu <- input$mu
     y <- input$y
+    center <- matrix(0, 1, 2) # центр 0, 0
     
     sigma = matrix(c(x, mu, mu, y), 2, 2)
-    
+    detSigma <- det(sigma)
     
     output$sigmaMess1 = renderText({
       paste(sigma[1,1],sigma[1,2],sep=" ")
@@ -71,26 +73,33 @@ server <- function(input, output) {
         e = exp(-0.5 * (x - mu) %*% solve(sigma) %*% t(x - mu))
         k * e
       }
+      a <- sigma[1, 1]
+      b <- sigma[1, 2]
+      c <- sigma[2, 1]
+      d <- sigma[2, 2]
+      A <- d / detSigma
+      B <- (-b - c) / detSigma
+      C <- a / detSigma
+      D <- (-2 * d * center[1, 1] + b * center[1, 2] + c * center[1, 2]) / detSigma
+      E <- (b * center[1, 1] + c * center[1, 1] - 2 * a * center[1, 2]) / detSigma
+      f <- (d * center[1, 1] * center[1, 1] - b * center[1, 1] * center[1, 2] - c * center[1, 1] * center[1, 2] + a * center[1, 2] * center[1, 2]) / detSigma
+      
       zfunc <- function(x, y) {
-        sapply(1:length(x), function(i) normDist(x[i], y[i], mu, sigma))
+        1 / sqrt(2 * pi * d) * exp(-0.5 * (A * x * x + B * y *x + C * y * y + D * x + E * y + f))
       }
       radius <- 3
       
-      minX = -sigma[1, 1] - radius
-      maxX = sigma[1, 1] + radius
-      minY = -sigma[2, 2] - radius
-      maxY = sigma[2, 2] + radius
+      minX <- -sigma[1, 1] - radius
+      maxX <- sigma[1, 1] + radius
+      minY <- -sigma[2, 2] - radius
+      maxY <- sigma[2, 2] + radius
       
-      x = seq(minX, maxX, len=200)
-      y = seq(minY, maxY, len=200)
-      z = outer(x, y, zfunc)
+      x <- seq(minX, maxX, len=150)
+      y <- seq(minY, maxY, len=150)
+      z <- outer(x, y, zfunc)
       
-      add = F
-      for (level in seq(0.02, 0.2, 0.01)) {
-        # contour(x, y, z,asp= 1)
-        contour(x, y, z, levels = level, drawlabels = T, lwd = 1, col = '#FF3333', add = add, asp = 1)
-        add = T
-      }
+      contour(x, y, z, lwd = 1, col = '#FF3333', asp = 1)
+        
     }
   })
 }

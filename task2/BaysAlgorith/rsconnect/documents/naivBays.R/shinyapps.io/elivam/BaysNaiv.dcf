@@ -1,0 +1,12 @@
+name: BaysNaiv
+title: BaysNaiv
+username:
+account: elivam
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1533743
+bundleId: 2622628
+url: https://elivam.shinyapps.io/BaysNaiv/
+when: 1574881829.80432
+asMultiple: FALSE
+asStatic: FALSE
