@@ -312,7 +312,7 @@ u к тому классу , для которого суммарный вес �
 Все случаи рассмотрены по следущей ссылке  
 [Shiny](https://elivam.shinyapps.io/BaysNaiv/)
 
-##Plug-in алгоритм
+## Plug-in алгоритм
 Нормальный дискриминантный анализ — это один из вариантов
 байесовской классификации, в котором в качестве моделей
 восстанавливаемых плотностей рассматривают многомерные
@@ -321,7 +321,7 @@ u к тому классу , для которого суммарный вес �
 <a href="https://www.codecogs.com/eqnedit.php?latex=N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" title="N(x;\mu,\Sigma) = \frac{1}{(2\pi)^n |\Sigma|} \exp (-\frac{1}{2}(x - \mu)^T \Sigma ^{-1}(x - \mu))" /></a>
 
 ,где 
-<a href="https://www.codecogs.com/eqnedit.php?latex=N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?N(x;\mu,\Sigma)&space;=&space;\frac{1}{(2\pi)^n&space;|\Sigma|}&space;\exp&space;(-\frac{1}{2}(x&space;-&space;\mu)^T&space;\Sigma&space;^{-1}(x&space;-&space;\mu))" title="N(x;\mu,\Sigma) = \frac{1}{(2\pi)^n |\Sigma|} \exp (-\frac{1}{2}(x - \mu)^T \Sigma ^{-1}(x - \mu))" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=x&space;\in&space;R^{~n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x&space;\in&space;R^{~n}" title="x \in R^{~n}" /></a>
 , <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;\in&space;R&space;^&space;{~n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;\in&space;R&space;^&space;{~n}" title="\mu \in R ^ {~n}" /></a>   — математическое ожидание (центр),
 <a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma&space;\in&space;R&space;^&space;{~n&space;\times&space;n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma&space;\in&space;R&space;^&space;{~n&space;\times&space;n}" title="\Sigma \in R ^ {~n \times n}" /></a>  —
 ковариационная матрица. Предполагается, что матрица <a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma" title="\Sigma" /></a> симметричная, невырожденная, положительно определённая.
