@@ -278,6 +278,21 @@ u к тому классу , для которого суммарный вес �
  
 
 # Байесовские алгоритмы классификации
+Байесовские алгоритмы классификации основаны на
+предположении, что <a href="https://www.codecogs.com/eqnedit.php?latex=X\times&space;Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X\times&space;Y" title="X\times Y" /></a> 
+ — вероятностное пространство с неизвестной плотностью распределения <a href="https://www.codecogs.com/eqnedit.php?latex=p(x,y)&space;=&space;P(y)p(x|y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x,y)&space;=&space;P(y)p(x|y)" title="p(x,y) = P(y)p(x|y)" /></a>, из
+которого случайно и независимо извлекаются <a href="https://www.codecogs.com/eqnedit.php?latex=l" target="_blank"><img src="https://latex.codecogs.com/gif.latex?l" title="l" /></a> наблюдений.
+Вероятность <a href="https://www.codecogs.com/eqnedit.php?latex=P(y)&space;=&space;P_y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(y)&space;=&space;P_y" title="P(y) = P_y" /></a> появления объектов класса <a href="https://www.codecogs.com/eqnedit.php?latex=y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a> называется
+априорной вероятностью класса, плотности распределения <a href="https://www.codecogs.com/eqnedit.php?latex=p(x|y)&space;=&space;p_y(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x|y)&space;=&space;p_y(x)" title="p(x|y) = p_y(x)" /></a> — функции правдоподобия классов.
+
+Байесовский подход является классическим в теории
+распознавания образов и лежит в основе многих методов. Он опирается
+на теорему о том, что если плотности распределения классов известны,
+то алгоритм классификации, имеющий минимальную вероятность
+ошибок, можно выписать в явном виде.
+
+Обозначим через <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda&space;_y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda&space;_y" title="\lambda _y" /></a> – величину потери алгоритмом <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a> при
+неправильной классификации объекта класса <a href="https://www.codecogs.com/eqnedit.php?latex=y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>.
 
 ## Линии уровня нормального распределения 
 Случайная величина <a href="https://www.codecogs.com/eqnedit.php?latex=x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x" title="x" /></a>  имеет нормальное (гауссовское) распределение с параметрами 
