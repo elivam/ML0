@@ -294,6 +294,27 @@ u к тому классу , для которого суммарный вес �
 Обозначим через <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda&space;_y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda&space;_y" title="\lambda _y" /></a> – величину потери алгоритмом <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a> при
 неправильной классификации объекта класса <a href="https://www.codecogs.com/eqnedit.php?latex=y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>.
 
+###### Теорема. 
+Если известны априорные вероятности классов <a href="https://www.codecogs.com/eqnedit.php?latex=P_y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P_y" title="P_y" /></a> и
+функции правдоподобия <a href="https://www.codecogs.com/eqnedit.php?latex=p_y(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p_y(x)" title="p_y(x)" /></a>, то минимум среднего риска 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=R(a)&space;=&space;\sum_{y\in&space;Y}&space;\sum_{s\in&space;Y}&space;\lambda_y&space;P_y&space;P(A_s|y),&space;A_s&space;\left&space;\{&space;{x&space;\in&space;X|~&space;a(x)&space;=&space;s}&space;\right&space;\}," target="_blank"><img src="https://latex.codecogs.com/gif.latex?R(a)&space;=&space;\sum_{y\in&space;Y}&space;\sum_{s\in&space;Y}&space;\lambda_y&space;P_y&space;P(A_s|y),&space;A_s&space;\left&space;\{&space;{x&space;\in&space;X|~&space;a(x)&space;=&space;s}&space;\right&space;\}," title="R(a) = \sum_{y\in Y} \sum_{s\in Y} \lambda_y P_y P(A_s|y), A_s \left \{ {x \in X|~ a(x) = s} \right \}," /></a>
+
+достигается алгоритмом
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=&space;arg&space;\max_{y&space;\in&space;Y}\lambda_y~&space;P_y&space;~p_y(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=&space;arg&space;\max_{y&space;\in&space;Y}\lambda_y~&space;P_y&space;~p_y(x)" title="a(x) = arg \max_{y \in Y}\lambda_y~ P_y ~p_y(x)" /></a>
+
+Такой алгоритм называется оптимальным байесовским
+решающим правилом. Однако, на практике зачастую плотности
+распределения классов неизвестны и их приходится восстанавливать
+п о обучающей выборке. В этом случае байесовский алгоритм перестает
+быть оптимальным. Поэтому, чем лучше удастся восстановить
+функции правдоподобия, тем ближе будет к оптимальному
+построенный алгоритм. Существуют множество способов
+восстановления плотностей распределения по обучающей выборке,
+откуда как следствие большое количество разновидностей байесовских
+алгоритмов классификаций.
+
 ## Линии уровня нормального распределения 
 Случайная величина <a href="https://www.codecogs.com/eqnedit.php?latex=x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x" title="x" /></a>  имеет нормальное (гауссовское) распределение с параметрами 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /></a> и <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma^2" title="\sigma^2" /></a>, если ее плотность задается выражением:
