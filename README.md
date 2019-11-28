@@ -294,7 +294,7 @@ u к тому классу , для которого суммарный вес �
 Обозначим через <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda&space;_y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda&space;_y" title="\lambda _y" /></a> – величину потери алгоритмом <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a> при
 неправильной классификации объекта класса <a href="https://www.codecogs.com/eqnedit.php?latex=y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>.
 
-###### Теорема. 
+##### Теорема. 
 Если известны априорные вероятности классов <a href="https://www.codecogs.com/eqnedit.php?latex=P_y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P_y" title="P_y" /></a> и
 функции правдоподобия <a href="https://www.codecogs.com/eqnedit.php?latex=p_y(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p_y(x)" title="p_y(x)" /></a>, то минимум среднего риска 
 

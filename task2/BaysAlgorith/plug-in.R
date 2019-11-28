@@ -4,8 +4,10 @@ ui <- fluidPage(
   titlePanel("Изменяемые параметры"),
   sidebarLayout(
     sidebarPanel(
-      numericInput("NumberOfSamples1", "Количество элементов первого класса:", 150,min = 100,max=500, width = '200px'),
-      numericInput("NumberOfSamples2", "Количество элементов второго класса:", 150,min = 100,max=500, width = '200px')
+      numericInput("NumberOfSamples1", "Количество элементов первого класса:", 150,min = 10,max=500, width = '200px'),
+      numericInput("NumberOfSamples2", "Количество элементов второго класса:", 150,min = 10,max=500, width = '200px'),
+      numericInput("m1", "mu1:", 1,min = 1,max=30, width = '200px'),
+      numericInput("m2", "mu2:", 1,min = 1,max=30, width = '200px')
       
       
     ),
@@ -57,8 +59,7 @@ getCoefPlugIn <- function(mu1, sigma1, mu2, sigma2)
   beta <- invSigma1 %*% t(mu1) - invSigma2 %*% t(mu2)
   d <- -2 * beta[1, 1]
   e <- -2 * beta[2, 1]
-  return (c("x^2" = a, "xy" = b, "y^2" = c, "x" = d, "y"
-            = e, "1" = f))
+  return (c("x^2" = a, "xy" = b, "y^2" = c, "x" = d, "y"= e, "1" = f))
 }
 ## Количество объектов в каждом классе
 server <- function(input, output) {
@@ -68,11 +69,14 @@ server <- function(input, output) {
       CountForFirst <- input$NumberOfSamples1
       CountForSecond <- input$NumberOfSamples2
       
+      m1 <- input$m1
+      m2 <- input$m2
+      
       ## Генерируем тестовые данные
-      Sigma1 <- matrix(c(10, 0, 0, 1), 2, 2)
+      Sigma1 <- matrix(c(10, 0, 0, 3), 2, 2)
       Sigma2 <- matrix(c(1, 0, 0, 5), 2, 2)
-      Mu1 <- c(1, 0)
-      Mu2 <- c(15, 0)
+      Mu1 <- c(m1, 0)
+      Mu2 <- c(m2, 0)
       xy1 <- mvrnorm(n=CountForFirst, Mu1, Sigma1)
       xy2 <- mvrnorm(n=CountForSecond, Mu2, Sigma2)
       xl <- rbind(cbind(xy1, 1), cbind(xy2, 2))

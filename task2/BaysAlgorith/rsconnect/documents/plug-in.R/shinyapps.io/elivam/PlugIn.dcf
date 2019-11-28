@@ -1,0 +1,12 @@
+name: PlugIn
+title: PlugIn
+username:
+account: elivam
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1534537
+bundleId: 2622944
+url: https://elivam.shinyapps.io/PlugIn/
+when: 1574891266.6904
+asMultiple: FALSE
+asStatic: FALSE
