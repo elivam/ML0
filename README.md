@@ -345,7 +345,8 @@ u к тому классу , для которого суммарный вес �
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu" title="\mu" /></a>и дисперисией  ,отличающися для разных классов.
 
 Допускается предположение о том, что все параметры набора данных независимы. Обычно так не бывает. 
-Все случаи рассмотрены по следущей ссылке  
+
+Реализация алгоритма доступна по ссылке 
 [Shiny](https://elivam.shinyapps.io/BaysNaiv/)
 
 ## Plug-in алгоритм
@@ -370,3 +371,5 @@ u к тому классу , для которого суммарный вес �
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu_y&space;=&space;\frac&space;{1}{l_y}&space;\sum_{x_{i}:y_{i}=y}&space;x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu_y&space;=&space;\frac&space;{1}{l_y}&space;\sum_{x_{i}:y_{i}=y}&space;x_i" title="\mu_y = \frac {1}{l_y} \sum_{x_{i}:y_{i}=y} x_i" /></a>
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma_y&space;=&space;\frac&space;{1}{l_y&space;-&space;1}&space;\sum_{x_{i}:y_{i}=y}&space;(x_i&space;-&space;\mu_y)(x_i&space;-&space;\mu_y)^T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma_y&space;=&space;\frac&space;{1}{l_y&space;-&space;1}&space;\sum_{x_{i}:y_{i}=y}&space;(x_i&space;-&space;\mu_y)(x_i&space;-&space;\mu_y)^T" title="\Sigma_y = \frac {1}{l_y - 1} \sum_{x_{i}:y_{i}=y} (x_i - \mu_y)(x_i - \mu_y)^T" /></a>
+
+Реализация алгоритма доступна по ссылке [Shiny](https://elivam.shinyapps.io/PlugIn/)
