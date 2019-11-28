@@ -43,6 +43,12 @@ ui <- fluidPage(
     mainPanel(
       HTML("<center><h1><b>Наивный нормальный байесовский классификатор</b></h1>"),
       h3(textOutput("label")),
+      HTML("<h3> Восстанвленные параметры </h3>"),
+      HTML("<h4> Для первого класса </h4>"),
+      HTML("<h5> Мат ожидание </h5>"),
+      textOutput(outputId = "covMessage12"),
+      
+      textOutput(outputId = "covMessage22"),
       plotOutput(outputId = "plot", height = "700px")
     )
   )
@@ -130,8 +136,16 @@ server <- function(input, output) {
   sigma1 <- get_sigma(x1, mu1)
   sigma2 <- get_sigma(x2, mu2)
   
- print(mu1)
- print(mu2)
+   print(mu1)
+   print(mu2)
+   output$covMessage12 = renderText({
+     paste(mu1,sep=" ")
+   })
+   
+   
+   output$covMessage22 = renderText({
+      paste(mu2,sep=" ")
+    })
   
  lmd1 <- input$lmd1
  p1 <- input$p1

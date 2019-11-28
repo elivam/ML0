@@ -6,14 +6,23 @@ ui <- fluidPage(
     sidebarPanel(
       numericInput("NumberOfSamples1", "Количество элементов первого класса:", 150,min = 10,max=500, width = '200px'),
       numericInput("NumberOfSamples2", "Количество элементов второго класса:", 150,min = 10,max=500, width = '200px'),
-      numericInput("m1", "mu1:", 1,min = 1,max=30, width = '200px'),
-      numericInput("m2", "mu2:", 1,min = 1,max=30, width = '200px')
-      
+      numericInput("m1", "μ для первого класса:", 1,min = 1,max=30, width = '200px'),
+      numericInput("m2", "μ для второго класса:", 1,min = 1,max=30, width = '200px'),
+      numericInput("sigama11forFirst", "элемент [1,1] ковариационной матрица первого класса:", 1,min = 1,max=30, width = '400px'),
+      numericInput("sigama22forFirst", "элемент [2,2] ковариационной матрица первого класса:", 1,min = 1,max=30, width = '400px'),
+      numericInput("sigama11forSecond", "элемент [1,1] ковариационной матрица второго класса:", 1,min = 1,max=30, width = '400px'),
+      numericInput("sigama22forSecond", "элемент [2,2] ковариационной матрица второго класса:", 1,min = 1,max=30, width = '400px')
       
     ),
     mainPanel(
       HTML("<center><h1><b>Подстановочный алгоритм</b></h1>"),
-      plotOutput(outputId = "plot", height = "500px")
+      plotOutput(outputId = "plot", height = "500px"),
+      HTML("<h4>Восстановленная ковариаионная матрица для первого класса</h4>"),
+      textOutput(outputId = "covMessage1"),
+      textOutput(outputId = "covMessage2"),
+      HTML("<h4>Восстановленная ковариаионная матрица для второго класса</h4>"),
+      textOutput(outputId = "covMessage12"),
+      textOutput(outputId = "covMessage22")
     )
   )
 )
@@ -71,10 +80,15 @@ server <- function(input, output) {
       
       m1 <- input$m1
       m2 <- input$m2
+      sigama11forFirst <- input$sigama11forFirst
+      sigama22forFirst <- input$sigama22forFirst
+      sigama11forSecond <- input$sigama11forSecond
+      sigama22forSecond <- input$sigama22forSecond
+      
       
       ## Генерируем тестовые данные
-      Sigma1 <- matrix(c(10, 0, 0, 3), 2, 2)
-      Sigma2 <- matrix(c(1, 0, 0, 5), 2, 2)
+      Sigma1 <- matrix(c(sigama11forFirst, 0, 0, sigama22forFirst), 2, 2)
+      Sigma2 <- matrix(c(sigama11forSecond, 0, 0, sigama22forSecond), 2, 2)
       Mu1 <- c(m1, 0)
       Mu2 <- c(m2, 0)
       xy1 <- mvrnorm(n=CountForFirst, Mu1, Sigma1)
@@ -88,19 +102,28 @@ server <- function(input, output) {
       objectsOfSecondClass <- xl[xl[,3] == 2, 1:2]
       mu1 <- restorMu(objectsOfFirstClass)
       mu2 <- restorMu(objectsOfSecondClass)
-      sigma1 <- restorCovMatrix(objectsOfFirstClass,
-                                         mu1)
-      sigma2 <- restorCovMatrix(objectsOfSecondClass,
-                                         mu2)
-      coeffs <- getCoefPlugIn(mu1, sigma1, mu2, sigma2)
+      sigma1 <- restorCovMatrix(objectsOfFirstClass,mu1)
+      sigma2 <- restorCovMatrix(objectsOfSecondClass,mu2)
+      
+      output$covMessage1 = renderText({
+        paste(sigma1[1],sigma1[2],sep=" ")
+      })
+      output$covMessage2 = renderText({
+        paste(sigma1[3],sigma1[4],sep=" ")
+      })  
+      
+      output$covMessage12 = renderText({
+        paste(sigma1[1],sigma1[2],sep=" ")
+      })
+      output$covMessage22 = renderText({
+        paste(sigma1[3],sigma1[4],sep=" ")
+      })
+      cff <- getCoefPlugIn(mu1, sigma1, mu2, sigma2)
       ## Рисуем дискриминантую функцию – красная линия
       x <- y <- seq(-10, 20, len=100)
-      z <- outer(x, y, function(x, y) coeffs["x^2"]*x^2 +
-                   coeffs["xy"]*x*y
-                 + coeffs["y^2"]*y^2 + coeffs["x"]*x
-                 + coeffs["y"]*y + coeffs["1"])
-      contour(x, y, z, levels=0, drawlabels=FALSE, lwd = 2, col =
-                "#FF3300", add = TRUE)
+      z <- outer(x, y, function(x, y) cff["x^2"]*x^2 + cff["xy"]*x*y + cff["y^2"]*y^2 + cff["x"]*x
+                 + cff["y"]*y + cff["1"])
+      contour(x, y, z, levels=0, drawlabels=FALSE, lwd = 2, col = "#FF3300", add = TRUE)
 })
 }
 shinyApp(ui = ui, server = server)
