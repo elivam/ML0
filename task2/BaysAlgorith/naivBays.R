@@ -1,21 +1,26 @@
 library(shiny)
 library(MASS)
+
+date <- read.csv("filename.csv")
 ui <- fluidPage(
+  
   
   titlePanel("Изменяемые параметры"),
   sidebarLayout(
     sidebarPanel(
-      checkboxInput("class","Отобразить классификацию", FALSE),
+      # checkboxInput("class","Отобразить классификацию", FALSE),
       
-      numericInput("NumberOfSamples", "Кол-во элементов:", 150,min = 1,max=500, width = '200px'),
+      # numericInput("NumberOfSamples", "Кол-во элементов:", 150,min = 1,max=500, width = '200px'),
       
       numericInput("mu1", "μ для первого класса", 1,min=1,max=10, width = '200px'),
       
       numericInput("mu2", "μ для второго класса", 4,min=1,max=10, width = '200px'),
       
-      numericInput("sigma1", "Диагональные элементы ковариационной матрицы для первого класса", 2,min=1,max=20, width = '400px'),
+      # checkboxInput("vib","Выборка не меняется", FALSE),
       
-      numericInput("sigma2", "Диагональные элементы ковариационной матрицы второго класса", 2,min=1,max=20, width = '400px'),
+      numericInput("sigma1", "Элементы ковариационной матрицы для первого класса", 2,min=1,max=20, width = '400px'),
+      
+      numericInput("sigma2", "Элементы ковариационной матрицы для второго класса", 2,min=1,max=20, width = '400px'),
        
       numericInput("lmd1","Задайте степень важности для первого класса", 1,min=1,max=10, width = '400px'),
       
@@ -43,12 +48,8 @@ ui <- fluidPage(
     mainPanel(
       HTML("<center><h1><b>Наивный нормальный байесовский классификатор</b></h1>"),
       h3(textOutput("label")),
-      HTML("<h3> Восстанвленные параметры </h3>"),
-      HTML("<h4> Для первого класса </h4>"),
-      HTML("<h5> Мат ожидание </h5>"),
-      textOutput(outputId = "covMessage12"),
       
-      textOutput(outputId = "covMessage22"),
+      # textOutput(outputId = "covMessage22"),
       plotOutput(outputId = "plot", height = "700px")
     )
   )
@@ -59,8 +60,8 @@ naivBays <- function(x, mu, sigma, lamda, P){
   res <- log(lamda*P)
   
   for(i in 1 : n){
-    formula <- (1/(sigma[i]*sqrt(2*pi))) * exp(-1 * ((x[i] - mu[i])^2)/(2*sigma[i]^2))
-    res <- res + log(formula)
+    f<- (1/(sigma[i]*sqrt(2*pi))) * exp(-1 * ((x[i] - mu[i])^2)/(2*sigma[i]^2))
+    res <- res + log(f)
   }
   
   return(res)
@@ -108,53 +109,73 @@ server <- function(input, output) {
       x1 <- x1 + 0.2
     }
   }
-  
-  
-  output$plot = renderPlot ({
-  sigma1 <- matrix(c(input$sigma1, 0, 0, input$sigma1),2,2)
-  sigma2 <- matrix(c(input$sigma2, 0, 0, input$sigma2),2,2)
-  
-  mu1 <- c(input$mu1,input$mu1)
-  mu2 <- c(input$mu2,input$mu2)
-  
-  
-  x1 <- mvrnorm(n = input$NumberOfSamples, mu1, sigma1)
-  x2 <- mvrnorm(n = input$NumberOfSamples, mu2, sigma2)
-  
-  xy1 <- cbind(x1,1) 
-  xy2 <- cbind(x2,2) 
-  
-  xl <- rbind(xy1,xy2)
-
-  colors <- c("#FF6666", "#333399")
-  plot(xl[,1],xl[,2],xlab = "Первый признак",ylab = "Второй признак" ,pch = 20, col = colors[xl[,3]], asp = 1, bg=colors[xl[,3]])
-
-
-  mu1 <- get_mu(x1)
-  mu2 <- get_mu(x2)     
-
-  sigma1 <- get_sigma(x1, mu1)
-  sigma2 <- get_sigma(x2, mu2)
-  
-   print(mu1)
-   print(mu2)
-   output$covMessage12 = renderText({
-     paste(mu1,sep=" ")
-   })
-   
-   
-   output$covMessage22 = renderText({
-      paste(mu2,sep=" ")
-    })
-  
- lmd1 <- input$lmd1
- p1 <- input$p1
- lmd2 <- input$lmd2
- p2 <- input$p2
  
-  if(input$class){
-    classMap(mu1, sigma1,mu2, sigma2,lmd1,p1, lmd2, p2)
-  }
+  
+output$plot = renderPlot ({
+    s1 <- input$sigma1
+    s2 <- input$sigma2
+  
+    sigma1 <- matrix(c(s1, 0, 0, s1),2,2)
+    sigma2 <- matrix(c(s2, 0, 0, s2),2,2)
+  
+    mu1 <- c(input$mu1,input$mu1)
+    mu2 <- c(input$mu2,input$mu2)
+  
+    x1 <- mvrnorm(n = 150, mu1, sigma1)
+    x2 <- mvrnorm(n = 150, mu2, sigma2)
+    xy1 <- cbind(x1,1) 
+    xy2 <- cbind(x2,2) 
+    
+    xl <- date # rbind(xy1,xy2)
+
+    print(xl[])
+    # write.csv(xl[], "filename.csv")
+    colors <- c("#FF6660", "#333399")
+    plot(xl[,1],xl[,2],xlab = "Первый признак",ylab = "Второй признак" ,pch = 20, col = colors[xl[,3]], asp = 1, bg=colors[xl[,3]])
+    mu1 <- get_mu(x1)
+    mu2 <- get_mu(x2)     
+  
+    sigma1 <- get_sigma(x1, mu1)
+    sigma2 <- get_sigma(x2, mu2)
+    
+     print(mu1)
+     print(mu2)
+     output$covMessage12 = renderText({
+       paste(mu1,sep=" ")
+     })
+     
+     
+     output$covMessage22 = renderText({
+        paste(mu2,sep=" ")
+      })
+    
+   lmd1 <- input$lmd1
+   p1 <- input$p1
+   lmd2 <- input$lmd2
+   p2 <- input$p2
+   
+   x1 <- -15;
+   
+   while(x1 < 20){
+     x2 <- -8;
+     
+     while(x2 < 13){          
+       
+       class <- 0;
+       
+       if(naivBays(c(x1,x2), mu1, sigma1, lmd1, p1) > naivBays(c(x1,x2), mu2, sigma2, lmd2, p2)){
+         class <- 1
+       } 
+       else {
+         class <- 2
+       }
+       
+       points(x1, x2, pch = 21, col=colors[class], asp = 1)
+       x2 <- x2 + 0.2
+     }
+     x1 <- x1 + 0.2
+   }
+  
   })
 }
 shinyApp(ui = ui, server = server)

@@ -7,9 +7,9 @@ ui <- fluidPage(
       numericInput("NumberOfSamples1", "Количество элементов первого класса:", 150,min = 10,max=500, width = '200px'),
       numericInput("NumberOfSamples2", "Количество элементов второго класса:", 150,min = 10,max=500, width = '200px'),
       numericInput("m1", "μ для первого класса:", 1,min = 1,max=30, width = '200px'),
-      numericInput("m2", "μ для второго класса:", 1,min = 1,max=30, width = '200px'),
+      numericInput("m2", "μ для второго класса:", 15,min = 1,max=30, width = '200px'),
       numericInput("sigama11forFirst", "элемент [1,1] ковариационной матрица первого класса:", 1,min = 1,max=30, width = '400px'),
-      numericInput("sigama22forFirst", "элемент [2,2] ковариационной матрица первого класса:", 1,min = 1,max=30, width = '400px'),
+      numericInput("sigama22forFirst", "элемент [2,2] ковариационной матрица первого класса:", 9,min = 1,max=30, width = '400px'),
       numericInput("sigama11forSecond", "элемент [1,1] ковариационной матрица второго класса:", 1,min = 1,max=30, width = '400px'),
       numericInput("sigama22forSecond", "элемент [2,2] ковариационной матрица второго класса:", 1,min = 1,max=30, width = '400px')
       
