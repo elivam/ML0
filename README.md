@@ -364,7 +364,8 @@ u к тому классу , для которого суммарный вес �
 Изменяя математическое ожидание, значения матрицы  мы получаем различные выборки нормального распределения. Но как только мы начинаем изменять 
 априорную вероятность и степень важности любого из классов, мы получаем разную классификацию одного и того же набора объектов.
 
-![alt text](https://github.com/elivam/ML0/blob/master/pictures/ClassMapNaivBays.PNG) 
+| ![alt text](https://github.com/elivam/ML0/blob/master/pictures/ClassMapNaivBays.PNG) |
+| ------------ |
 Реализация алгоритма доступна по ссылке 
 [Shiny](https://elivam.shinyapps.io/BaysNaiv/)
 
@@ -393,8 +394,7 @@ u к тому классу , для которого суммарный вес �
 
 Разделяющая поверхность между двумя классами s и t задаётся следующим образом:
 
-|  <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" title="\lambda_s~ P_s~ p_s(x) = \lambda_t~ P_t~ p_t(x)" /></a> |
-| ------------- | ------------- |
+<a href="https://www.codecogs.com/eqnedit.php?latex=\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" title="\lambda_s~ P_s~ p_s(x) = \lambda_t~ P_t~ p_t(x)" /></a>
 Прологарифмируя обе части выражения и проведя преобразования получим уровнение разделяющей поверхности.
 Реализация алгоритма доступна по ссылке [Shiny](https://elivam.shinyapps.io/PlugIn/)
 
