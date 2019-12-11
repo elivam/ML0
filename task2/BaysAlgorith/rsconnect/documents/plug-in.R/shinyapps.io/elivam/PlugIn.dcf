@@ -5,8 +5,8 @@ account: elivam
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1534537
-bundleId: 2623503
+bundleId: 2659830
 url: https://elivam.shinyapps.io/PlugIn/
-when: 1574914106.99084
+when: 1576090506.38383
 asMultiple: FALSE
 asStatic: FALSE

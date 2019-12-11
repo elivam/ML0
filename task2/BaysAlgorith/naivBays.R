@@ -42,8 +42,7 @@ ui <- fluidPage(
                   step = 0.1         
       )
       
-    ),
-    
+    ),  
     # Show a plot of the generated distribution
     mainPanel(
       HTML("<center><h1><b>Наивный нормальный байесовский классификатор</b></h1>"),
@@ -80,36 +79,19 @@ get_sigma <- function(xl, mu){
   return(c(sum((xl[,1] - mu[1])^2)/l, sum((xl[,2] - mu[2])^2)/l))
   
 }
-
+a <- function(x,lamda, mu, sigma,P){
+  n <- 2
+  class <- 0
+  i <- 1
+  if(naivBays(x, mu[1:2], sigma[1:2], lamda[1], P[1])>naivBays(x, mu[3:4], sigma[3:4], lamda[2], P[2] ))
+   class <- 1
+  else 
+   class <- 2
+  
+  return (class)
+}
 
 server <- function(input, output) {
-  
-  classMap <-function(mu1, sigma1,mu2, sigma2,lmd1,p1,lmd2,p2){
-    # lamda <- 1 #input$lmd
-    # p <-  0.5 #input$p
-    x1 <- -15;
-    
-    while(x1 < 20){
-      x2 <- -8;
-      
-      while(x2 < 13){          
-        
-        class <- 0;
-        
-        if(naivBays(c(x1,x2), mu1, sigma1, lmd1, p1) > naivBays(c(x1,x2), mu2, sigma2, lmd2, p2)){
-          class <- 1
-        } 
-        else {
-          class <- 2
-        }
-        
-        points(x1, x2, pch = 21, col=colors[class], asp = 1)
-        x2 <- x2 + 0.2
-      }
-      x1 <- x1 + 0.2
-    }
-  }
- 
   
 output$plot = renderPlot ({
     s1 <- input$sigma1
@@ -138,37 +120,38 @@ output$plot = renderPlot ({
     sigma1 <- get_sigma(x1, mu1)
     sigma2 <- get_sigma(x2, mu2)
     
-     print(mu1)
-     print(mu2)
-     output$covMessage12 = renderText({
-       paste(mu1,sep=" ")
-     })
-     
-     
-     output$covMessage22 = renderText({
-        paste(mu2,sep=" ")
-      })
+   print(mu1)
+   print(mu2)
+   output$covMessage12 = renderText({
+     paste(mu1,sep=" ")
+   })
+   
+   
+   output$covMessage22 = renderText({
+      paste(mu2,sep=" ")
+    })
     
    lmd1 <- input$lmd1
    p1 <- input$p1
    lmd2 <- input$lmd2
    p2 <- input$p2
    
-   x1 <- -15;
+   s <- c(sigma1,sigma2)
+   p <- c(p1,p2)
+   l <- c(lmd1,lmd2)
+   m <-c(mu1,mu2)
    
+   # lamda <- 1 #input$lmd
+   # p <-  0.5 #input$p
+   
+   print(p)
+   x1 <- -14;
    while(x1 < 20){
      x2 <- -8;
      
      while(x2 < 13){          
-       
-       class <- 0;
-       
-       if(naivBays(c(x1,x2), mu1, sigma1, lmd1, p1) > naivBays(c(x1,x2), mu2, sigma2, lmd2, p2)){
-         class <- 1
-       } 
-       else {
-         class <- 2
-       }
+       xl<-c(x1,x2)
+       class <- a(xl,l, m, s,p)
        
        points(x1, x2, pch = 21, col=colors[class], asp = 1)
        x2 <- x2 + 0.2

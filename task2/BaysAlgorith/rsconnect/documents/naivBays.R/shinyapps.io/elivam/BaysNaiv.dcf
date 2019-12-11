@@ -5,8 +5,8 @@ account: elivam
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1533743
-bundleId: 2641332
+bundleId: 2659845
 url: https://elivam.shinyapps.io/BaysNaiv/
-when: 1575487893.70837
+when: 1576090957.86321
 asMultiple: FALSE
 asStatic: FALSE
