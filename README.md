@@ -366,10 +366,10 @@ u к тому классу , для которого суммарный вес �
 
 <img src = "https://github.com/elivam/ML0/blob/master/pictures/ClassMapNaivBays.PNG" height = "400px" width = "600px" aling = center>
 
-Реализация алгоритма доступна по ссылке 
+Реализация алгоритма в Shiny доступна по ссылке 
 [Naiv Bays algo](https://elivam.shinyapps.io/BaysNaiv/)
 
-[NaivBays.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/naivBays.R)
+Сам код алгоритма : [NaivBays.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/naivBays.R)
 
 ## Plug-in алгоритм
 Нормальный дискриминантный анализ — это один из вариантов
@@ -397,14 +397,16 @@ u к тому классу , для которого суммарный вес �
 Разделяющая поверхность между двумя классами s и t задаётся следующим образом:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" title="\lambda_s~ P_s~ p_s(x) = \lambda_t~ P_t~ p_t(x)" /></a>
+
 Прологарифмируя обе части выражения и проведя преобразования получим уровнение разделяющей поверхности.
 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/PlugInClassMap.PNG) 
 ![alt text](https://github.com/elivam/ML0/blob/master/pictures/PlugInClassM.PNG) 
 
-Реализация алгоритма доступна по ссылке [Plug-in algo](https://elivam.shinyapps.io/PlugIn/)
 
-[Plug-in.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/plug-in.R)
+Реализация алгоритма в Shiny доступна по ссылке [Plug-in algo](https://elivam.shinyapps.io/PlugIn/)
+
+Сам код алгоритма : [Plug-in.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/plug-in.R)
 
 
 # Линейный дискриминант Фишера
@@ -427,12 +429,11 @@ u к тому классу , для которого суммарный вес �
 Для нахождения коэффициентов разделяющей поверхности используются две одинаковые ковариационные матрицы.
 Вероятность ошибки ЛДФ выражается через расстояние Махалонобиса между классами. В случае, когда классов два 
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=R(a)&space;=&space;\Phi&space;(-&space;\frac{1}{2}&space;||\mu_1&space;-&space;]mu_2&space;||_&space;\Sigma)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?R(a)&space;=&space;\Phi&space;(-&space;\frac{1}{2}&space;||\mu_1&space;-&space;]mu_2&space;||_&space;\Sigma)" title="R(a) = \Phi (- \frac{1}{2} ||\mu_1 - ]mu_2 ||_ \Sigma)" /></a>
-
+<a href="https://www.codecogs.com/eqnedit.php?latex=R(a)&space;=&space;\Phi&space;(-&space;\frac{1}{2}&space;||\mu_1&space;-&space;\mu_2&space;||_&space;\Sigma)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?R(a)&space;=&space;\Phi&space;(-&space;\frac{1}{2}&space;||\mu_1&space;-&space;\mu_2&space;||_&space;\Sigma)" title="R(a) = \Phi (- \frac{1}{2} ||\mu_1 - \mu_2 ||_ \Sigma)" /></a>
 где 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\Phi(x)&space;=&space;N&space;(x;0,1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Phi(x)&space;=&space;N&space;(x;0,1)" title="\Phi(x) = N (x;0,1)" /></a>
-- функция станартного нормального распределения.
+<a href="https://www.codecogs.com/eqnedit.php?latex=\Phi(x)&space;=&space;N&space;(x;0,1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Phi(x)&space;=&space;N&space;(x;0,1)" title="\Phi(x) = N (x;0,1)" /></a> - функция станартного нормального распределения.
 
-[LDF - algo](https://elivam.shinyapps.io/LDFAlgo/) 
 
-[LDF.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/LDF.R)
+Реализация алгоритма в Shiny доступна по ссылке [LDF - algo](https://elivam.shinyapps.io/LDFAlgo/) 
+
+Сам код алгоритма : [LDF.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/LDF.R)
