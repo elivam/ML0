@@ -5,8 +5,8 @@ account: elivam
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1592243
-bundleId: 2660927
+bundleId: 2669638
 url: https://elivam.shinyapps.io/LDFAlgo/
-when: 1576124398.45387
+when: 1576433991.39536
 asMultiple: FALSE
 asStatic: FALSE

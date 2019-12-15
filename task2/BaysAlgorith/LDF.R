@@ -8,9 +8,9 @@ ui <- fluidPage(
       numericInput("NumberOfSamples1", "Количество элементов первого класса:", 150,min = 10,max=500, width = '200px'),
       numericInput("NumberOfSamples2", "Количество элементов второго класса:", 150,min = 10,max=500, width = '200px'),
       numericInput("m1", "μ для первого класса:", 1,min = 1,max=30, width = '200px'),
-      numericInput("m2", "μ для второго класса:", 15,min = 1,max=30, width = '200px'),
-      numericInput("sigama1", "элемент [1,1] ковариационной матрица первого класса:", 2,min = 1,max=30, width = '400px'),
-      numericInput("sigama2", "элемент [2,2] ковариационной матрица первого класса:", 2,min = 1,max=30, width = '400px')
+      numericInput("m2", "μ для второго класса:", 2,min = 1,max=30, width = '200px'),
+      numericInput("sigama1", "элемент [1,1] ковариационной матрицы:", 2,min = 1,max=30, width = '400px'),
+      numericInput("sigama2", "элемент [2,2] ковариационной матрицы:", 2,min = 1,max=30, width = '400px')
       
     ),
     mainPanel(
@@ -19,6 +19,8 @@ ui <- fluidPage(
       plotOutput(outputId = "plot", height = "500px"),
       HTML("<h4>Уравнение разделяющей поверхности</h4>"),
       HTML("<img src=\"https://sun9-16.userapi.com/c857724/v857724200/11558a/r5NmEOthxuY.jpg\">"),
+      HTML("<h4>Риск</h4>"),
+      textOutput(outputId = "Risk"),
       HTML("<h4>Восстановленная ковариационная матрица для классов</h4>"),
       textOutput(outputId = "covMessage1"),
       textOutput(outputId = "covMessage2"),
@@ -26,6 +28,7 @@ ui <- fluidPage(
       textOutput(outputId = "Mu1"),
       HTML("<h4>Восстановленный центр нормального распределения для второго класса</h4>"),
       textOutput(outputId = "Mu2")
+      
     )
   )
 )
@@ -80,13 +83,15 @@ server <- function(input, output) {
     ## Оценивание
     objectsOfFirstClass <- xl[xl[,3] == 1, 1:2]
     objectsOfSecondClass <- xl[xl[,3] == 2, 1:2]
-    
+    Gaus <- function(x, mu, sigma){
+      return( (1/(sigma*sqrt(2*pi))) * exp(-(x - mu)^2/2*sigma^2) )
+    }
     
     getRiskLDF <- function(mu1, mu2, sigma) {
       minusM <- mu1 - mu2
       m <- minusM %*% solve(sigma) %*% t(minusM)
       m <- m * -0.5
-      res <- gausian(m, 0, 1)
+      res <- Gaus(m, 0, 1)
     }
     
     getCoefLDF <- function(mu1,mu2,sigma)
@@ -119,10 +124,8 @@ server <- function(input, output) {
       }
       return(func)
     }
-    Gaus <- function(x, mu, sigma){
-      return( (1/(sigma*sqrt(2*pi))) * exp(-(x - mu)^2/2*sigma^2) )
-    }
-    a <-function(xl,mu1,mu2, sigma,lamda1,P1,lamda2,P2){
+
+    LDFalgo <-function(xl,mu1,mu2, sigma,lamda1,P1,lamda2,P2){
       l <- log(lamda1*P1) - log(lamda2 * P2)
       cff <- getCoefLDF(mu1, mu2, sigma)
       if (l+ cff["x"]*xl[1]
@@ -133,6 +136,14 @@ server <- function(input, output) {
       else  class <- 2
       return (class)
     }
+    
+    mu1 <- restorMu(xy1)
+    mu2 <- restorMu(xy2)
+    
+    sigma <-restorCovarianceMatrix(xy1,xy2,mu1,mu2)
+    
+    
+    Risk <- getRiskLDF(mu1,mu2,sigma)
     
     
     output$covMessage1 = renderText({
@@ -147,10 +158,9 @@ server <- function(input, output) {
     output$Mu2 = renderText({
       paste(round(mu2, digits = 3),sep=" ")
     }) 
-    mu1 <- restorMu(xy1)
-    mu2 <- restorMu(xy2)
-    
-    sigma <-restorCovarianceMatrix(xy1,xy2,mu1,mu2)
+    output$Risk = renderText({
+      paste(round(Risk, digits = 5),sep=" ")
+    })
     
     x <- seq(-20, 20, len = 300)
     y <- seq(-20, 20, len = 300)
@@ -169,7 +179,7 @@ server <- function(input, output) {
         x2 <- -10
         while (x2< 10){
           x <- c(x1,x2)
-          class <- a(x,mu1,mu2, sigma,1,0.5,2,0.5)
+          class <- LDFalgo(x,mu1,mu2, sigma,1,0.5,2,0.5)
           print(class)
           points(x1, x2, pch = 21, col=colors[class], asp = 1)
           x2 <- x2 +0.4

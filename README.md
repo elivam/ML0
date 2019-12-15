@@ -350,7 +350,7 @@ u к тому классу , для которого суммарный вес �
 матрицы.
 
 Все случаи рассмотрены по следущей ссылке  
-[Shiny](https://elivam.shinyapps.io/LevelsLines/)
+[Level lines algo](https://elivam.shinyapps.io/LevelsLines/)
 
 ## Наивный байесовский классификатор
 
@@ -367,7 +367,9 @@ u к тому классу , для которого суммарный вес �
 <img src = "https://github.com/elivam/ML0/blob/master/pictures/ClassMapNaivBays.PNG" height = "400px" width = "600px" aling = center>
 
 Реализация алгоритма доступна по ссылке 
-[Shiny](https://elivam.shinyapps.io/BaysNaiv/)
+[Naiv Bays algo](https://elivam.shinyapps.io/BaysNaiv/)
+
+[NaivBays.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/naivBays.R)
 
 ## Plug-in алгоритм
 Нормальный дискриминантный анализ — это один из вариантов
@@ -396,15 +398,41 @@ u к тому классу , для которого суммарный вес �
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\lambda_s~&space;P_s~&space;p_s(x)&space;=&space;\lambda_t~&space;P_t~&space;p_t(x)" title="\lambda_s~ P_s~ p_s(x) = \lambda_t~ P_t~ p_t(x)" /></a>
 Прологарифмируя обе части выражения и проведя преобразования получим уровнение разделяющей поверхности.
-Реализация алгоритма доступна по ссылке [Shiny](https://elivam.shinyapps.io/PlugIn/)
+
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/PlugInClassMap.PNG) 
+![alt text](https://github.com/elivam/ML0/blob/master/pictures/PlugInClassM.PNG) 
+
+Реализация алгоритма доступна по ссылке [Plug-in algo](https://elivam.shinyapps.io/PlugIn/)
+
+[Plug-in.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/plug-in.R)
 
 
 # Линейный дискриминант Фишера
 
-Теперь рассмотрим линейный дискриминант Фишера (ЛДФ),
-который, в отличии от подстановочного алгоритма, при построении
-предполагает, что ковариационные матрицы классов равны, и для их
+Линейный дискриминант Фишера очень похож на подстановочный алгоритм, но в отличии от
+него, при построении предполагает что ковариационные матрицы всех классов
+равны,и для их
 восстановления нужно использовать все (всех классов) объекты
-обучающей выборки.
+обучающей выборки. В таком случае алгоритм классификации принимает вид : 
 
-[Shiny](https://elivam.shinyapps.io/LDFAlgo/) 
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=&space;arg&space;\max_{y&space;\in&space;Y}&space;(ln(\lambda_y&space;P_y)&space;-&space;\frac{1}{2}&space;\mu_y^T&space;\Sigma&space;^{-1}&space;&plus;&space;x^T&space;\Sigma&space;^{-1}&space;\mu_y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=&space;arg&space;\max_{y&space;\in&space;Y}&space;(ln(\lambda_y&space;P_y)&space;-&space;\frac{1}{2}&space;\mu_y^T&space;\Sigma&space;^{-1}&space;&plus;&space;x^T&space;\Sigma&space;^{-1}&space;\mu_y)" title="a(x) = arg \max_{y \in Y} (ln(\lambda_y P_y) - \frac{1}{2} \mu_y^T \Sigma ^{-1} + x^T \Sigma ^{-1} \mu_y)" /></a>
+
+Параметры нормального распределения оценивают согласно принципа максимума правдоподобия:
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu_y&space;=&space;\frac&space;{1}{l_y}&space;\sum_{x_{i}:y_{i}=y}&space;x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu_y&space;=&space;\frac&space;{1}{l_y}&space;\sum_{x_{i}:y_{i}=y}&space;x_i" title="\mu_y = \frac {1}{l_y} \sum_{x_{i}:y_{i}=y} x_i" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma_y&space;=&space;\frac&space;{1}{l_y&space;-&space;1}&space;\sum_{x_{i}:y_{i}=y}&space;(x_i&space;-&space;\mu_y)(x_i&space;-&space;\mu_y)^T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma_y&space;=&space;\frac&space;{1}{l_y&space;-&space;1}&space;\sum_{x_{i}:y_{i}=y}&space;(x_i&space;-&space;\mu_y)(x_i&space;-&space;\mu_y)^T" title="\Sigma_y = \frac {1}{l_y - 1} \sum_{x_{i}:y_{i}=y} (x_i - \mu_y)(x_i - \mu_y)^T" /></a>
+
+Для нахождения коэффициентов разделяющей поверхности используются две одинаковые ковариационные матрицы.
+Вероятность ошибки ЛДФ выражается через расстояние Махалонобиса между классами. В случае, когда классов два 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=R(a)&space;=&space;\Phi&space;(-&space;\frac{1}{2}&space;||\mu_1&space;-&space;]mu_2&space;||_&space;\Sigma)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?R(a)&space;=&space;\Phi&space;(-&space;\frac{1}{2}&space;||\mu_1&space;-&space;]mu_2&space;||_&space;\Sigma)" title="R(a) = \Phi (- \frac{1}{2} ||\mu_1 - ]mu_2 ||_ \Sigma)" /></a>
+
+где 
+<a href="https://www.codecogs.com/eqnedit.php?latex=\Phi(x)&space;=&space;N&space;(x;0,1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Phi(x)&space;=&space;N&space;(x;0,1)" title="\Phi(x) = N (x;0,1)" /></a>
+- функция станартного нормального распределения.
+
+[LDF - algo](https://elivam.shinyapps.io/LDFAlgo/) 
+
+[LDF.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/LDF.R)

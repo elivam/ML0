@@ -35,31 +35,24 @@ ui <- fluidPage(
   )
 )
 ## Восстановление центра нормального распределения
-
-restorMu <- function(objects)
-{
-  ## mu = 1 / m * sum_{i=1}^m(objects_i)
-  rows <- dim(objects)[1]
-  cols <- dim(objects)[2]
+restorMu <- function(obj) {
+  cols <- dim(obj)[2]
   mu <- matrix(NA, 1, cols)
-  for (col in 1:cols)
-  {
-    mu[1, col] = mean(objects[,col])
+  for (i in 1:cols) {
+    mu[1, i] <- mean(obj[, i])
   }
   return(mu)
 }
 ## Восстановление ковариационной матрицы нормального распределения
-restorCovMatrix <- function(objects, mu)
-{
-  rows <- dim(objects)[1]
-  cols <- dim(objects)[2]
-  sigma <- matrix(0, cols, cols)
-  for (i in 1:rows)
-  {
-    sigma <- sigma + (t(objects[i,] - mu) %*%
-                        (objects[i,] - mu)) / (rows - 1)
+
+restorCovMatrix <- function(obj, mu) {
+  rows = dim(obj)[1]
+  cols = dim(obj)[2]
+  covar = matrix(0, cols, cols)
+  for (i in 1:rows) {
+    covar = covar + (t(obj[i,] - mu) %*% (obj[i,] - mu)) / (rows - 1)
   }
-  return (sigma)
+  return(covar)
 }
 ## Получение коэффициентов подстановочного алгоритма
 CoeffPlugIn <- function(mu1, sigma1, mu2, sigma2)
@@ -77,32 +70,31 @@ CoeffPlugIn <- function(mu1, sigma1, mu2, sigma2)
   e <- -2 * beta[2, 1] #x2
   return (c("x^2" = a, "xy" = b, "y^2" = c, "x" = d, "y"= e, "f" = f))
 }
-a <-function(xl,mu1,mu2, Sigma1,Sigma2,lamda1,P1,lamda2,P2){
-  l <- log(lamda1*P1) - log(lamda2 * P2)
-  cff <- CoeffPlugIn(mu1, Sigma1, mu2, Sigma2)
-  if (l+ cff["x^2"]*xl[1]*xl[1]
-      + cff["xy"]*xl[1]*xl[2] 
-      + cff["y^2"]*xl[2]*xl[2] 
-      + cff["x"]*xl[1]+ cff["y"]*xl[2] 
-      + cff["f"]  < 0){
-    class <- 1
-  }
-  else  class <- 2
+NormDist <-function(xl,mu, sigma,lamda,p){
+  r <- log(p * lamda)
+  l <- length(xl)
+  print(xl)
+  print(mu)
+  print(sigma)      
+  chisl <- exp(
+    (-1/2)*(
+      t(xl-as.vector(mu)) %*% solve(sigma) %*% (xl-as.vector(mu))
+    )
+  )
+  res <-  chisl/((2*pi) * det(sigma)^(1/2))
+  
+  return(res)
+}
+plugInAlgo <- function(x, y, mu1, mu2, sigma1,sigma2, lamda, p){
+  r1 <- log(p[1] * lamda[1])
+  r2 <- log(p[2] * lamda[2])
+  l <- length(xl)
+  res1 <- NormDist(c(x, y), mu1, sigma1, lamda[1], p[1])
+  res2 <- NormDist(c(x, y), mu2, sigma2, lamda[2], p[2])
+  class <- ifelse(res1 > res2, 1, 2)
   return (class)
 }
-classMap <- function(mu1,mu2, Sigma1,Sigma2){
-  x1 <- -5
-  x2 <- -5
-  colors <- c("#FF66FF", "#3399CC")
-  while(x1 < 5){
-    while (x2< 5)
-      x <- c(x1,x2)
-    class <- a(x,mu1,mu2, Sigma1,Sigma2,1,0.5,2,0.5)
-    points(x, y, pch = 21, col=colors[class], asp = 1)
-    x1 <- x1 +0.5
-  }
-  x2 <- x2 +0.5 
-}
+
 server <- function(input, output) {
   
   output$plot = renderPlot ({
@@ -117,9 +109,7 @@ server <- function(input, output) {
     sigama11forSecond <- input$sigama11forSecond
     sigama22forSecond <- input$sigama22forSecond
     
-    
-    
-    ## Генерируем тестовые данные
+
     Sigma1 <- matrix(c(sigama11forFirst, 0, 0, sigama22forFirst), 2, 2)
     Sigma2 <- matrix(c(sigama11forSecond, 0, 0, sigama22forSecond), 2, 2)
     Mu1 <- c(m1, 0)
@@ -127,9 +117,9 @@ server <- function(input, output) {
     xy1 <- mvrnorm(n=CountForFirst, Mu1, Sigma1)
     xy2 <- mvrnorm(n=CountForSecond, Mu2, Sigma2)
     xl <- rbind(cbind(xy1, 1), cbind(xy2, 2))
-    ## Рисуем обучающую выборку
     colors <- c("#FF66FF", "#3399CC")
     plot(xl[,1], xl[,2], pch = 21, bg = colors[xl[,3]], asp = 1)
+    
     ## Оценивание
     objectsOfFirstClass <- xl[xl[,3] == 1, 1:2]
     objectsOfSecondClass <- xl[xl[,3] == 2, 1:2]
@@ -144,46 +134,47 @@ server <- function(input, output) {
     })
     output$covMessage2 = renderText({
       paste(round(sigma1[3], digits = 3),round(sigma1[4], digits = 3),sep=" ")
-    })  
+    }) 
+    
     output$Mu1 = renderText({
       paste(round(mu1, digits = 3),sep=" ")
     }) 
     output$Mu2 = renderText({
       paste(round(mu2, digits = 3),sep=" ")
-    }) 
+    })
+    
     output$covMessage12 = renderText({
       paste(round(sigma2[1], digits = 3),round(sigma2[2], digits = 3),sep=" ")
     })
     output$covMessage22 = renderText({
       paste(round(sigma2[3], digits = 3),round(sigma2[4], digits = 3),sep=" ")
     })
+    
+    ## Отображение дискриминантной кривой
     cff <- CoeffPlugIn(mu1, sigma1, mu2, sigma2)
-    ## Отображение дискриминантной функции
-    x <- y <- seq(-20, 20, len=100)
-    x1<--5
-    #   while (x1<5){
-    #     x2<- -5
-    #     while(x2<5){
-    #       xl<-c(x1,x2)
-    #       class <- a(xl,mu1,mu2, Sigma1,Sigma2)
-    #     
-    #       points(x, y, pch = 21, col=colors[class], asp = 1)
-    #       x1 <- x2+1
-    #     } 
-    #     x2 <- x1+1
-    # }
+    x <- y <- seq(-20, 20, len <- 100)
+    p <- 1
+    lamd <- 1
+    l <- log(p * lamd)
     
-    z <- outer(x, y, function(x, y) cff["x^2"]*x^2 
-               + cff["xy"]*x*y + cff["y^2"]*y^2 + cff["x"]*x
+    ## проверка значений
+    # cff <- CoeffPlugIn(mu1, Sigma1, mu2, Sigma2)
+    # w <- input$w
+    # o <- input$o
+    # l <- log(1*0.5) - log(2 * 0.5)
+    # print(l+ cff["x^2"]*w*w
+    #           + cff["xy"]*w*o 
+    #           + cff["y^2"]*o*o 
+    #           + cff["x"]*w+ cff["y"]*o 
+    #           + cff["f"] )
+    # 
+    x <- seq(-20, 30, len = 100)
+    y <- seq(-20, 20, len = 100)
+    cff <- CoeffPlugIn(mu1, sigma1, mu2, sigma2)
+    print(cff["x^2"]*(-20)*(-20))
+    z <- outer(x, y, function (x, y)  cff["x^2"]*x*x 
+               + cff["xy"]*x*y + cff["y^2"]*y*y + cff["x"]*x
                + cff["y"]*y + cff["f"])
-    # print(x)
-    # print(cff["x^2"]*(6)*6 
-    #       + cff["xy"]*(6)*(0) + cff["y^2"]*(0)^0 + cff["x"]*(6)
-    #       + cff["y"]*(0) + cff["f"])
-    
-    # print(dd)
-    # print(z)
-    # points(c(x, y),z, pch = 21, col=colors[class], asp = 1)
     contour(x, y, z, levels=0, drawlabels=FALSE, lwd = 2, col = "#FF3300", add = TRUE)
     print(1)
     
@@ -191,17 +182,34 @@ server <- function(input, output) {
       x1 <- -10
       
       colors <- c("#FF66FF", "#3399CC")
-      while(x1 < 30){
-        x2 <- -10
-        while (x2< 10){
-          x <- c(x1,x2)
-          class <- a(x,mu1,mu2, Sigma1,Sigma2,1,0.5,2,0.5)
-          print(class)
-          points(x1, x2, pch = 21, col=colors[class], asp = 1)
-          x2 <- x2 +0.4
-        }
-        x1 <- x1 +0.4 
-      }
+       # x <- seq(-10, 30, 40/80)
+       # y <- seq(-10, 10, 40/80)
+       
+       for (i in x) {
+         for (j in y) {
+           x <- c(i, j)
+           m <- c(mu1, mu2)
+           sigma <- c(Sigma1, Sigma2)
+           p <- c(1, 1)
+           lamda <- c(1, 1)
+           class <- plugInAlgo(i, j, mu1, mu2, sigma1,sigma2 , lamda, p) 
+           points(i, j, pch = 21, col = colors[class])
+         }
+       }
+      
+      # while(x1 < 30){
+      #     x2 <- -10
+      #     while (x2< 10){
+      #      
+      #     res1 <- NormDist(c(x1, x2), mu1, sigma1, 1, 1)
+      #     res2 <- NormDist(c(x1, x2), mu2, sigma2, 1, 1)
+      #     color <- ifelse(res1 > res2, "#FF66FF", "#3399CC")
+      # 
+      #     points(x1, x2, pch = 21, col=colors[class], asp = 1)
+      #     x2 <- x2 +0.4
+      #     }
+      #    x1 <- x1 +0.4
+      #  }
       
     }
     
