@@ -19,13 +19,16 @@ u к тому классу , для которого суммарный вес �
 | [Метода потенциальных функций ядро Епачечникова](#Метод-потенциальных-функций)|                 | Max число ошибок = 6 |
 
 
-# Байесовские алгоритмы классификации
+# [Байесовские алгоритмы классификации](#Байесовские-алгоритмы-классификации)
 
 - [Линии уровня нормального распределения](#Линии-уровня-нормального-распределения)
 - [Наивный байесовский классификатор](#Наивный-байесовский-классификатор)
 - [Plug-in алгоритм](#Plug-in-алгоритм)
 - [LDF](#Линейный-Дискриминант-Фишера)
 
+# [Линейные алгоритмы классификации](#Линейные-алгоритмы-классификации)
+
+-[ADALINE](#Адаптивный-линейный-элемент)
 
 # Алгоритм k-ближайших соседей      
                             
@@ -437,3 +440,54 @@ u к тому классу , для которого суммарный вес �
 Реализация алгоритма в Shiny доступна по ссылке [LDF - algo](https://elivam.shinyapps.io/LDFAlgo/) 
 
 Сам код алгоритма : [LDF.R](https://github.com/elivam/ML0/blob/master/task2/BaysAlgorith/LDF.R)
+
+# Линейные алгоритмы классификации
+
+Линейная модель классификации
+
+Пусть <a href="https://www.codecogs.com/eqnedit.php?latex=X&space;=&space;\mathbb{R}^n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X&space;=&space;\mathbb{R}^n" title="X = \mathbb{R}^n" /></a>
+и <a href="https://www.codecogs.com/eqnedit.php?latex=Y&space;=&space;\left&space;\{&space;-1,&space;&plus;1&space;\right&space;\}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y&space;=&space;\left&space;\{&space;-1,&space;&plus;1&space;\right&space;\}" title="Y = \left \{ -1, +1 \right \}" /></a>
+
+Если дискриминантная функция определяется как скалярное произведение вектора x и вектора параметров <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;\in&space;\mathbb{R}^n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;\in&space;\mathbb{R}^n" title="w \in \mathbb{R}^n" /></a>
+, то получим линейный классификатор :
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(x,w)&space;=&space;sign&space;(\left&space;\langle&space;w,x&space;\right&space;\rangle&space;-&space;w_0)&space;=&space;sign&space;(\sum_{j=1}^{n}w_jf_j(x)&space;-&space;w_0)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x,w)&space;=&space;sign&space;(\left&space;\langle&space;w,x&space;\right&space;\rangle&space;-&space;w_0)&space;=&space;sign&space;(\sum_{j=1}^{n}w_jf_j(x)&space;-&space;w_0)" title="a(x,w) = sign (\left \langle w,x \right \rangle - w_0) = sign (\sum_{j=1}^{n}w_jf_j(x) - w_0)" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\left&space;\langle&space;w,x&space;\right&space;\rangle&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\left&space;\langle&space;w,x&space;\right&space;\rangle&space;=&space;0" title="\left \langle w,x \right \rangle = 0" /></a> задает гиперплоскость, разделяющую 
+классы в пространстве <a href="https://www.codecogs.com/eqnedit.php?latex=\mathbb{R}^n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathbb{R}^n" title="\mathbb{R}^n" /></a>.
+
+Если вектор x находится по одну сторону гиперплоскости с ее направляющим вектором <a href="https://www.codecogs.com/eqnedit.php?latex=w" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w" title="w" /></a>
+, то объект x относится к классу +1, иначе к классу -1.
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=M_i(w)&space;=&space;y_i\left&space;\langle&space;x_i,w&space;\right&space;\rangle" target="_blank"><img src="https://latex.codecogs.com/gif.latex?M_i(w)&space;=&space;y_i\left&space;\langle&space;x_i,w&space;\right&space;\rangle" title="M_i(w) = y_i\left \langle x_i,w \right \rangle" /></a> - отступ обекта относительно алгоритма классификации.
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=L(M)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L(M)" title="L(M)" /></a> - монотонно невозрастающая функция отступа, мажорирующая пороговую функцию потерь: 
+<a href="https://www.codecogs.com/eqnedit.php?latex=[&space;M&space;<&space;0]&space;\leq&space;L(M)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?[&space;M&space;<&space;0]&space;\leq&space;L(M)" title="[ M < 0] \leq L(M)" /></a>
+#### Метод стохастического градиента
+Пусть задана обучающая выборка <a href="https://www.codecogs.com/eqnedit.php?latex=X^l&space;=&space;\left&space;\{&space;(x_i,y_i)&space;\right&space;\}^l_{i=1}&space;,&space;x_i&space;\in&space;\mathbb{R}^n&space;,&space;y_i&space;\in&space;\left\{&space;-1,&plus;1&space;\right&space;\}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X^l&space;=&space;\left&space;\{&space;(x_i,y_i)&space;\right&space;\}^l_{i=1}&space;,&space;x_i&space;\in&space;\mathbb{R}^n&space;,&space;y_i&space;\in&space;\left\{&space;-1,&plus;1&space;\right&space;\}" title="X^l = \left \{ (x_i,y_i) \right \}^l_{i=1} , x_i \in \mathbb{R}^n , y_i \in \left\{ -1,+1 \right \}" /></a>
+
+Требуется найти вектор параметров <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;\in&space;\mathbb{R}^n" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;\in&space;\mathbb{R}^n" title="w \in \mathbb{R}^n" /></a>, при котором достигается минимум аппроксимированного эмпириского риска :
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=W(w,&space;X^l)&space;=&space;\sum_{i=1}^{l}&space;L&space;(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;y_i)&space;\rightarrow&space;\min_w" target="_blank"><img src="https://latex.codecogs.com/gif.latex?W(w,&space;X^l)&space;=&space;\sum_{i=1}^{l}&space;L&space;(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;y_i)&space;\rightarrow&space;\min_w" title="W(w, X^l) = \sum_{i=1}^{l} L (\left \langle w,x_i \right \rangle y_i) \rightarrow \min_w" /></a>
+
+Т.о. метод стохастического градиента - то итерационные процесс на каждом
+шаге которого сдвигаемся в сторону противоположную вектору
+градиента <a href="https://www.codecogs.com/eqnedit.php?latex=Q'(w,X^l)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Q'(w,X^l)" title="Q'(w,X^l)" /></a>,до тех пор, пока вектор весов <a href="https://www.codecogs.com/eqnedit.php?latex=w" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w" title="w" /></a> не перестанет
+изменяться, причем вычисления градиента производится не на всех
+объектах обучения, а выбирается случайный объект (отсюда и название
+метода «стохастический»), на основе которого и происходят
+вычисления. В зависимости от функции потерь, которая используется
+в функционале эмпирического риска, будем получать различные
+линейные алгоритмы классификации.
+
+
+# Адаптивный линейный элемент
+
+Возьмем <a href="https://www.codecogs.com/eqnedit.php?latex=L(M)&space;=&space;(M&space;-&space;1)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L(M)&space;=&space;(M&space;-&space;1)^2" title="L(M) = (M - 1)^2" /></a>, тогда 
+<a href="https://www.codecogs.com/eqnedit.php?latex=L'(M)&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;y_i&space;-1)&space;x_i&space;y_i&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;-&space;y_i)x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L'(M)&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;y_i&space;-1)&space;x_i&space;y_i&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;-&space;y_i)x_i" title="L'(M) = 2(\left \langle w,x_i \right \rangle y_i -1) x_i y_i = 2(\left \langle w,x_i \right \rangle - y_i)x_i" /></a>
+, и получим правило обновения весов на каждой итерации метода стохастического градиента :
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" title="w = w - \eta(\left \langle w, x_i \right \rangle - y_i) x_i" /></a>
+ 
+ 
