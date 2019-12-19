@@ -19,14 +19,14 @@ u к тому классу , для которого суммарный вес �
 | [Метода потенциальных функций ядро Епачечникова](#Метод-потенциальных-функций)|                 | Max число ошибок = 6 |
 
 
-# [Байесовские алгоритмы классификации](#Байесовские-алгоритмы-классификации)
+# [Байесовские aлгоритмы клаccификации](#Байесовские-алгоритмы-классификации)
 
 - [Линии уровня нормального распределения](#Линии-уровня-нормального-распределения)
 - [Наивный байесовский классификатор](#Наивный-байесовский-классификатор)
 - [Plug-in алгоритм](#Plug-in-алгоритм)
 - [LDF](#Линейный-Дискриминант-Фишера)
 
-# [Линейные алгоритмы классификации](#Линейные-алгоритмы-классификации)
+# [Линейные aлгоритмы клaccификации](#Линейные-алгоритмы-классификации)
 
 -[ADALINE](#Адаптивный-линейный-элемент)
 
@@ -484,10 +484,9 @@ u к тому классу , для которого суммарный вес �
 
 # Адаптивный линейный элемент
 
-Возьмем <a href="https://www.codecogs.com/eqnedit.php?latex=L(M)&space;=&space;(M&space;-&space;1)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L(M)&space;=&space;(M&space;-&space;1)^2" title="L(M) = (M - 1)^2" /></a>, тогда 
+Возьмем в качестве функции потерь <a href="https://www.codecogs.com/eqnedit.php?latex=L(M)&space;=&space;(M&space;-&space;1)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L(M)&space;=&space;(M&space;-&space;1)^2" title="L(M) = (M - 1)^2" /></a>, тогда 
 <a href="https://www.codecogs.com/eqnedit.php?latex=L'(M)&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;y_i&space;-1)&space;x_i&space;y_i&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;-&space;y_i)x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L'(M)&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;y_i&space;-1)&space;x_i&space;y_i&space;=&space;2(\left&space;\langle&space;w,x_i&space;\right&space;\rangle&space;-&space;y_i)x_i" title="L'(M) = 2(\left \langle w,x_i \right \rangle y_i -1) x_i y_i = 2(\left \langle w,x_i \right \rangle - y_i)x_i" /></a>
 , и получим правило обновения весов на каждой итерации метода стохастического градиента :
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" title="w = w - \eta(\left \langle w, x_i \right \rangle - y_i) x_i" /></a>
- 
  
