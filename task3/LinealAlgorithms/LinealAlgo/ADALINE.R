@@ -49,7 +49,7 @@ server <- function(input, output) {
     }
     
     drawPoints = function(x) {
-      colors = c("#336699", "#FFFF33", "#FF3333")
+      colors = c("#336699", "#FF3333", "#FFF333")
       for(i in 1:dim(x)[1]) x[i,3] = x[i,3] + 2
       lab = "ADALINE"
       plot(x[, 1], x[, 2], pch = 21, col = "darkred", bg = colors[x[,3]],
