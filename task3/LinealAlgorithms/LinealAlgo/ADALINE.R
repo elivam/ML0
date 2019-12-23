@@ -49,7 +49,7 @@ server <- function(input, output) {
     }
     
     drawPoints = function(x) {
-      colors = c("gold", "red", "blue")
+      colors = c("#336699", "#FFFF33", "#FF3333")
       for(i in 1:dim(x)[1]) x[i,3] = x[i,3] + 2
       lab = "ADALINE"
       plot(x[, 1], x[, 2], pch = 21, col = "darkred", bg = colors[x[,3]],
@@ -121,29 +121,6 @@ server <- function(input, output) {
     }
     drwLine = function(w, color) {
       abline(a = w[3] / w[2], b = -w[1] / w[2], lwd = 2, col = color)
-    }
-    drawGrad = function(data, reg){
-      p = function(x,y,w) sigmoid(x*w[1]+y*w[2]-w[3])-sigmoid(-x*w[1]-y*w[2]+w[3])
-      P = matrix(0, 100, 100)
-      for(i in seq(from=0, to=1, by=0.1)){
-        for(j in seq(from=0, to=1, by=0.1)){
-          P[i*10+1,j*10+1] = p(i,j,reg)
-        }
-      }
-      k = 1/max(max(P), -min(P))
-      for(i in seq(from=0, to=1, by=0.05)){
-        for(j in seq(from=0, to=1, by=0.05)){
-          pp = p(i,j,reg)
-          if(pp>0){
-            color = adjustcolor("blue",pp*k)
-            draw.circle(i, j, 0.035, 5, border = color, col = color)
-          }
-          if(pp<0){
-            color = adjustcolor("gold",-pp*k)
-            draw.circle(i, j, 0.035, 5, border = color, col = color)
-          } 
-        }
-      }
     }
     
     n1 = input$NumberOfSamples1
