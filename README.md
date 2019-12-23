@@ -489,4 +489,5 @@ u к тому классу , для которого суммарный вес �
 , и получим правило обновения весов на каждой итерации метода стохастического градиента :
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" title="w = w - \eta(\left \langle w, x_i \right \rangle - y_i) x_i" /></a>
- 
+
+[Shiny](https://eliva.shinyapps.io/LinealAlgo/) 
