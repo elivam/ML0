@@ -98,7 +98,7 @@ server <- function(input, output) {
     
     
     ## Стохастический градиент
-    sgd = function(xl, classes, L, updateRule, drawIters=FALSE, ost=FALSE, eps=1e-5,it = 1000, c =  color) {
+    sgd = function(xl, classes, L, updateRule, drawIters=FALSE, ost=FALSE, eps=1e-5,it = 1000, color) {
       rows = dim(xl)[1]
       xl = cbind(xl,seq(from=-1,to=-1,length.out=rows))
       cols = dim(xl)[2]
@@ -212,25 +212,25 @@ server <- function(input, output) {
     
     drawPoints(normdata)
     
-    adaLine <- sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=F, ost=TRUE, c = "#FF0000")
+    adaLine <- sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=F, ost=TRUE, color = "#FF0000")
     drwLine(adaLine, "#FF0000")
     
-    HebbLine <- sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=F, ost=TRUE, c = "#006633")
+    HebbLine <- sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=F, ost=TRUE, color = "#006633")
     drwLine(HebbLine, "#006633")
 
-    RegLine <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=F, ost=TRUE, c = "#660099")
+    RegLine <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=F, ost=TRUE,color = "#660099")
     drwLine(RegLine, "#660099")
     
     if(input$class1) {
-      sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=T, ost=TRUE, c = "#FF3300")
+      sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=T, ost=TRUE, color = "#FF3300")
     }
     
     if(input$class2) {
-      sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=T, ost=TRUE,c = "#339966")
+      sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=T, ost=TRUE,color = "#339966")
     }    
     
     if(input$class3) {
-      reg <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=T, ost=TRUE, c = "#996699")
+      reg <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=T, ost=TRUE, color ="#996699")
     }
     
     if (input$classMap1){
@@ -246,17 +246,17 @@ server <- function(input, output) {
     output$q1 = renderPlot({
       q <- adaLine
       x <- seq(length(q))
-      plot(x, q, type='l', lwd = 1)
+      plot(n, Q, type='l', lwd = 1)
     })
     output$q2 = renderPlot({
       q <- HebbLine
       x <- seq(length(q))
-      plot(x, q, type='l', lwd = 1)
+      plot(n, Q, type='l', lwd = 1)
     })
     output$q3 = renderPlot({
       q <- RegLine
       x <- seq(length(q))
-      plot(x, q, type='l', lwd = 1)
+      plot(n, Q, type='l', lwd = 1)
     })
     
    
