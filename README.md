@@ -519,4 +519,4 @@ u к тому классу , для которого суммарный вес �
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=P&space;\left&space;\(&space;y|x&space;\right&space;\)&space;=&space;\sigma&space;(\left&space;\langle&space;w,x&space;\right&space;\rangle&space;y&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P&space;\left&space;\(&space;y|x&space;\right&space;\)&space;=&space;\sigma&space;(\left&space;\langle&space;w,x&space;\right&space;\rangle&space;y&space;)" title="P \left \( y|x \right \) = \sigma (\left \langle w,x \right \rangle y )" /></a>.
 
-[Shiny](https://eliva.shinyapps.io/LinealAlgo/) 
+Все алгоритмы классификации рассмотрены : [Shiny](https://eliva.shinyapps.io/LinealAlgo/) 
