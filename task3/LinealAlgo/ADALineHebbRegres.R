@@ -1,11 +1,17 @@
 library(shiny)
 library(MASS)
+require("plotrix")
 
 ui <- fluidPage(
   titlePanel("Изменяемые параметры"),
   sidebarLayout(
     sidebarPanel(
-      # checkboxInput("class","Отобразить классификацию", FALSE),
+      checkboxInput("class1","Отобразить промежуточные линии для ADALINE", FALSE),
+      checkboxInput("classMap1","Отобразить карту классификации для ADALINE", FALSE),
+      checkboxInput("class2","Отобразить промежуточные линии для правила Хебба", FALSE),
+      checkboxInput("classMap2","Отобразить карту классификации для правила Хебба", FALSE),
+      checkboxInput("class3","Отобразить промежуточные линии для логистической регрессии", FALSE),
+      checkboxInput("classMap3","Отобразить карту классификации для логистической регрессии", FALSE),
       numericInput("NumberOfSamples1", "Кол-во элементов первого класса:", 150,min = 1,max=500, width = '200px'),
       numericInput("NumberOfSamples2", "Кол-во элементов второго класса:", 150,min = 1,max=500, width = '200px'),
       numericInput("mu1", "μ для первого класса", 1,min=1,max=10, width = '200px'),
@@ -19,10 +25,25 @@ ui <- fluidPage(
     ),  
     # Show a plot of the generated distribution
     mainPanel(
-      HTML("<center><h1><b>Адаптивный линейный элемент</b></h1>"),
+      HTML("<center><h1><b>ADALine and Hebb and LogReg</b></h1>"),
       h3(textOutput("label")),
       # textOutput(outputId = "covMessage22"),
-      plotOutput(outputId = "plot", height = "700px")
+      plotOutput(outputId = "plot", height = "700px"),
+        tags$h2("Адаптивный линейный элемент", style = "color: #FF0000"),
+        plotOutput(
+          outputId = "q1",
+          height =  "300px",
+        ),
+        tags$h2("Правило Хебба", style = "color: #006633"),
+        plotOutput(
+          outputId = "q2",
+          height =  "300px",
+        ),
+        tags$h2("Логистическая регрессия", style = "color: #660099"),
+        plotOutput(
+          outputId = "q3",
+          height =  "300px",
+        )
     )
   )
 )
@@ -48,17 +69,36 @@ server <- function(input, output) {
       return (w - Sum)
     }
     
+    HebbLoss <- function(m) {
+      return (max(-m, 0))
+    }  
+    
+    HebbUpdateW <- function(w, eta, xi, yi) {
+      return (w + eta * yi * xi)
+    }
+    
+    sigmoid <- function(z) {
+     return ( 1 / (1 + exp(-z)))
+    }
+    
+    RegLoss <- function(m) {
+      return (log2(1 + exp(-m)))
+    }
+    
+    RegUpdateW <- function(w, eta, xi, yi) {
+      return (w + eta * xi * yi * sigmoid(-sum(w * xi) * yi))
+    }
+    
     drawPoints = function(x) {
-      colors = c("#336699", "#FF3333", "#FFF333")
+      colors = c("#FFFF00", "#FF3333", "#FF9999")
       for(i in 1:dim(x)[1]) x[i,3] = x[i,3] + 2
-      lab = "ADALINE"
       plot(x[, 1], x[, 2], pch = 21, col = "darkred", bg = colors[x[,3]],
-           main = lab, asp = 1, xlab = "X", ylab = "Y")
+            asp = 1, xlab = "X", ylab = "Y")
     }
     
     
     ## Стохастический градиент
-    sgd = function(xl, classes, L, updateRule, drawIters=FALSE, ost=FALSE, eps=1e-5,it = 10000) {
+    sgd = function(xl, classes, L, updateRule, drawIters=FALSE, ost=FALSE, eps=1e-5,it = 1000, c =  color) {
       rows = dim(xl)[1]
       xl = cbind(xl,seq(from=-1,to=-1,length.out=rows))
       cols = dim(xl)[2]
@@ -114,11 +154,35 @@ server <- function(input, output) {
         Q0 = Q
         if (iter == it)  break;
         if(drawIters) {
-          drwLine(w, "black")
+          drwLine(w, color)
         }
       }
       return(w)
     }
+    drawGrad = function(data, reg){
+      p = function(x,y,w) sigmoid(x*w[1]+y*w[2]-w[3])-sigmoid(-x*w[1]-y*w[2]+w[3])
+      P = matrix(0, 100, 100)
+      for(i in seq(from=0, to=1, by=0.1)){
+        for(j in seq(from=0, to=1, by=0.1)){
+          P[i*10+1,j*10+1] = p(i,j,reg)
+        }
+      }
+      k = 1/max(max(P), -min(P))
+      for(i in seq(from=0, to=1, by=0.05)){
+        for(j in seq(from=0, to=1, by=0.05)){
+          pp = p(i,j,reg)
+          if(pp>0){
+            color = adjustcolor("#FF9999",pp*k)
+            draw.circle(i, j, 0.045, 4, border = color, col = color)
+          }
+          if(pp<0){
+            color = adjustcolor("#FFFF00",-pp*k)
+            draw.circle(i, j, 0.045, 4, border = color, col = color)
+          } 
+        }
+      }
+    }
+    
     drwLine = function(w, color) {
       abline(a = w[3] / w[2], b = -w[1] / w[2], lwd = 2, col = color)
     }
@@ -141,14 +205,60 @@ server <- function(input, output) {
     xy2 = mvrnorm(n2, mu2, covar2)
     
     ## В лин алгоритмах всего существует 2 класса {-1, +1}
-    classes = c(rep(-1, n1), rep(1, n2))
+    classes <- c(rep(-1, n1), rep(1, n2))
     
-    normdata = normalize(rbind(xy1,xy2))
-    normdata = cbind(normdata,classes)
+    normdata <- normalize(rbind(xy1,xy2))
+    normdata <- cbind(normdata,classes)
     
     drawPoints(normdata)
-    ada = sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=F, ost=TRUE)
-    drwLine(ada, "red")
+    
+    adaLine <- sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=F, ost=TRUE, c = "#FF0000")
+    drwLine(adaLine, "#FF0000")
+    
+    HebbLine <- sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=F, ost=TRUE, c = "#006633")
+    drwLine(HebbLine, "#006633")
+
+    RegLine <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=F, ost=TRUE, c = "#660099")
+    drwLine(RegLine, "#660099")
+    
+    if(input$class2) {
+      ada <- sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=T, ost=TRUE,c = "#339966")
+    }    
+    
+    if(input$class1) {
+      heb <- sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=T, ost=TRUE, c = "#FF3300")
+    }
+    if(input$class3) {
+      reg <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=T, ost=TRUE, c = "#996699")
+    }
+    
+    if (input$classMap1){
+      drawGrad(normdate, adaLine)
+    }
+    if (input$classMap2){
+      drawGrad(normdate, HebbLine)
+    }
+    if (input$classMap3){
+      drawGrad(normdate, RegLine)
+    }
+    
+    output$q1 = renderPlot({
+      q <- adaLine
+      x <- seq(length(q))
+      plot(x, q, type='l', lwd = 1)
+    })
+    output$q2 = renderPlot({
+      q <- HebbLine
+      x <- seq(length(q))
+      plot(x, q, type='l', lwd = 1)
+    })
+    output$q3 = renderPlot({
+      q <- RegLine
+      x <- seq(length(q))
+      plot(x, q, type='l', lwd = 1)
+    })
+    
+   
 })
 }
 shinyApp(ui = ui, server = server)
