@@ -221,13 +221,14 @@ server <- function(input, output) {
     RegLine <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=F, ost=TRUE, c = "#660099")
     drwLine(RegLine, "#660099")
     
+    if(input$class1) {
+      sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=T, ost=TRUE, c = "#FF3300")
+    }
+    
     if(input$class2) {
-      ada <- sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=T, ost=TRUE,c = "#339966")
+      sgd(normdata[,1:2], normdata[,3], HebbLoss, HebbUpdateW, drawIters=T, ost=TRUE,c = "#339966")
     }    
     
-    if(input$class1) {
-      heb <- sgd(normdata[,1:2], normdata[,3], AdalLoss, AdaUpdateW, drawIters=T, ost=TRUE, c = "#FF3300")
-    }
     if(input$class3) {
       reg <- sgd(normdata[,1:2], normdata[,3], RegLoss, RegUpdateW, drawIters=T, ost=TRUE, c = "#996699")
     }

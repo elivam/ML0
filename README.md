@@ -490,4 +490,33 @@ u к тому классу , для которого суммарный вес �
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;-&space;\eta(\left&space;\langle&space;w,&space;x_i&space;\right&space;\rangle&space;-&space;y_i)&space;x_i" title="w = w - \eta(\left \langle w, x_i \right \rangle - y_i) x_i" /></a>
 
+# Персептрон Розенблата (Правило Хебба)
+
+В качесстве функции потерь выберем :<a href="https://www.codecogs.com/eqnedit.php?latex=L&space;=&space;(-M)_{&plus;}&space;=&space;max(-M,&space;0)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L&space;=&space;(-M)_{&plus;}&space;=&space;max(-M,&space;0)" title="L = (-M)_{+} = max(-M, 0)" /></a>.
+Так же обновляетя правило обновления весов : <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;&plus;&space;\eta&space;\cdot&space;x_i&space;y_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;&plus;&space;\eta&space;\cdot&space;x_i&space;y_i" title="w = w + \eta \cdot x_i y_i" /></a>.
+
+# Логистическая регрессия
+
+Метод логистической регрессии основан на следующих вероятностных предположениях, которые имеют несколько интересных последствий:
+
+-линейный классификатор оказывается оптимальным байесовским;
+
+-однозначно определеяется фунция потерь;
+
+-можно получать численные оценки вероятности принадлежности объеквто классам;
+
+Существует следующее правило обновления весов для градиентного шага в методе стохастического градиента :
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;&plus;&space;\eta&space;x_i&space;y_i&space;\sigma&space;(&space;-&space;\left&space;\langle&space;w_i&space;,&space;x_i&space;\right&space;\rangle&space;y_i)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;&plus;&space;\eta&space;x_i&space;y_i&space;\sigma&space;(&space;-&space;\left&space;\langle&space;w_i&space;,&space;x_i&space;\right&space;\rangle&space;y_i)" title="w = w + \eta x_i y_i \sigma ( - \left \langle w_i , x_i \right \rangle y_i)" /></a>, где 
+
+сигмоид <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma(z)&space;=&space;\frac{1}{1&plus;e^{-z}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma(z)&space;=&space;\frac{1}{1&plus;e^{-z}}" title="\sigma(z) = \frac{1}{1+e^{-z}}" /></a>.
+
+Функция потерь определяется следующим образом : 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=L(M)&space;=&space;\log_2&space;(1&space;&plus;&space;e&space;^{-M})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L(M)&space;=&space;\log_2&space;(1&space;&plus;&space;e&space;^{-M})" title="L(M) = \log_2 (1 + e ^{-M})" /></a>
+
+А так же вероятность принадлежности объекта x класса y :
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=P&space;\left&space;\(&space;y|x&space;\right&space;\)&space;=&space;\sigma&space;(\left&space;\langle&space;w,x&space;\right&space;\rangle&space;y&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P&space;\left&space;\(&space;y|x&space;\right&space;\)&space;=&space;\sigma&space;(\left&space;\langle&space;w,x&space;\right&space;\rangle&space;y&space;)" title="P \left \( y|x \right \) = \sigma (\left \langle w,x \right \rangle y )" /></a>.
+
 [Shiny](https://eliva.shinyapps.io/LinealAlgo/) 
